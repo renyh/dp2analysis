@@ -1,0 +1,18 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/DigitalPlatform.Common/bin
+/DigitalPlatform.Common/obj
+/demo/bin/Debug
+/demo/obj/Debug
+/DigitalPlatform.LibraryClient/bin/Debug
+/DigitalPlatform.LibraryClient/obj
+/DigitalPlatform.MarcKernel/bin
+/DigitalPlatform.MarcKernel/obj
+/DigitalPlatform.MarcQuery/bin/Debug
+/DigitalPlatform.MarcQuery/obj/Debug
+/DigitalPlatform.Text/bin
+/DigitalPlatform.Text/obj
+/DigitalPlatform.Xml/bin
+/DigitalPlatform.Xml/obj

@@ -1,0 +1,289 @@
+﻿测试1-任
+===
+
+        public static MarcRecord MarcXml2MarcRecord(string strMarcXml,
+            out string strOutMarcSyntax,
+            out string strError)
+        {
+            MarcRecord record = null;
+
+            strError = "";
+            strOutMarcSyntax = "";
+
+            string strMARC = "";
+            int nRet = MarcUtil.Xml2Marc(strMarcXml,
+                false,
+                "",
+                out strOutMarcSyntax,
+                out strMARC,
+                out strError);
+            if (nRet == 0)
+                record = new MarcRecord(strMARC);
+            else
+                strError = "MarcXml转换错误:" + strError;
+
+            return record;
+        }
+        static string GetDisplayTimePeriodString(string strText)
+        {
+            strText = strText.Replace("day", "天");
+
+            return strText.Replace("hour", "小时");
+        }
+
+        public void OutputBorrowHistory(LibraryChannel channel,
+            XmlDocument reader_dom,
+            ChargingHistoryLoader history_loader,
+            ref int nRowIndex,
+            out ChargingItemWrapper first,
+            out string info)
+        {
+            int nStartRow = nRowIndex;
+            first = null;
+
+            info = "";
+
+            //info += "--- 借阅历史 --- " + history_loader.GetCount()+"<br/>";
+
+
+            info += "<table>"
+                + "<tr>"
+                + "<td>序号</td><td>借书日期</td><td>册条码号</td>"
+                + "<td>书名</td><td>索取号</td>"
+                + "</tr>";
+
+
+            int nRet = 0;
+            string strError = "";
+
+            List<string> item_barcodes = new List<string>();
+            int nItemIndex = 0;
+            foreach (ChargingItemWrapper wrapper in history_loader)
+            {
+                ChargingItem item = wrapper.Item;
+                ChargingItem rel = wrapper.RelatedItem;
+
+
+
+                string strItemBarcode = item.ItemBarcode;
+                string strBorrowDate = rel == null ? "" : rel.OperTime;
+                if (strBorrowDate.Length > 10)
+                    strBorrowDate = strBorrowDate.Substring(0, 10);
+                string title = "";
+                string clcClass="";
+
+                BiblioInfo biblioInfo = null;
+                nRet = this.GetBiblio(channel,
+                    strItemBarcode,
+                    out biblioInfo,
+                    out strError);
+                if (nRet == -1)
+                {
+                    title = strError;
+                }
+                else
+                {
+                    title = biblioInfo.Title;
+                    clcClass = biblioInfo.Class;
+                }
+
+                nItemIndex++;
+
+
+                info+="<tr>"
+                + "<td>"+nItemIndex+"</td><td>"+strBorrowDate+"</td><td>"+strItemBarcode+"</td>"
+                + "<td>"+title+"</td><td>"+clcClass+"</td>"
+                + "</tr>";
+
+                first = wrapper;
+            }
+
+            info += "</table>";
+
+
+
+        }
+
+===
+        public int GetBiblio(LibraryChannel channel, string itemBarcode,
+            out BiblioInfo biblioInfo,
+            out string strError)
+        {
+            strError = "";
+            biblioInfo = new BiblioInfo();
+
+            string strItemXml = "";
+            string strBiblio = "";
+            long lRet = channel.GetItemInfo(//null,
+                itemBarcode,
+                "xml",
+                out strItemXml,
+                "xml",
+                out strBiblio,
+                out strError);
+            if (-1 >= lRet)
+            {
+                strError = "获得'" + itemBarcode + "'发生错误: " + strError;
+                goto ERROR1;
+            }
+            else if (0 == lRet)
+            {
+                strError = itemBarcode + " 记录不存在";
+                goto ERROR1;
+            }
+            else if (1 < lRet)
+            {
+                strError = itemBarcode + " 记录重复，需馆员处理";
+                goto ERROR1;
+            }
+
+
+            XmlDocument dom = new XmlDocument();
+            try
+            {
+                dom.LoadXml(strItemXml);
+
+                string strItemState = DomUtil.GetElementText(dom.DocumentElement, "state");
+                string strMarcSyntax = "";
+                MarcRecord record = MarcXml2MarcRecord(strBiblio, out strMarcSyntax, out strError);
+                if (record != null)
+                {
+                    if (strMarcSyntax == "unimarc")
+                    {
+                        // strISBN = record.select("field[@name='010']/subfield[@name='a']").FirstContent;
+                        biblioInfo.Title = record.select("field[@name='200']/subfield[@name='a']").FirstContent;
+                        biblioInfo.Class = record.select("field[@name='690']/subfield[@name='a']").FirstContent;
+                        // strAuthor = record.select("field[@name='200']/subfield[@name='f']").FirstContent;
+                    }
+                    else if (strMarcSyntax == "usmarc")
+                    {
+                        // strISBN = record.select("field[@name='020']/subfield[@name='a']").FirstContent;
+                        biblioInfo.Title = record.select("field[@name='245']/subfield[@name='a']").FirstContent;
+                        // strAuthor = record.select("field[@name='245']/subfield[@name='c']").FirstContent;
+                        
+                        //todo，usmarc取哪个字段；
+                        biblioInfo.Class = record.select("field[@name='690']/subfield[@name='a']").FirstContent;
+
+                    }
+                }
+                else
+                {
+                    strError = "图书信息解析错误:" + strError;
+                    goto ERROR1;
+                }
+            }
+            catch (Exception ex)
+            {
+                strError = itemBarcode + ":图书解析错误:" + ExceptionUtil.GetDebugText(ex);
+                goto ERROR1;
+            }
+
+            return 0;
+
+        ERROR1:
+            LogManager.Logger.Error(strError);
+            return -1;
+        }
+
+===
+        #if NO
+
+        // parameters:
+        //      bAdvanceXml 是否为 AdvanceXml 情况
+        static void OutputBorrowHistory(
+            XmlDocument reader_dom,
+            ChargingHistoryLoader history_loader,
+            CacheableBiblioLoader summary_loader,
+            ref int nRowIndex,
+            out ChargingItemWrapper first,
+            out string info)
+        {
+            int nStartRow = nRowIndex;
+            first = null;
+
+            info = "";
+
+            //info += "--- 借阅历史 --- " + history_loader.GetCount()+"<br/>";
+
+
+            info += "<table>"
+                + "<tr>"
+                + "<td>序号</td><td>册条码号</td><td>书目摘要</td><td>借阅时间</td>"
+                + "<td>期限</td><td>借阅操作者</td><td>还书时间</td><td>还书操作者</td>"
+                + "</tr>";
+
+
+
+
+            List<string> item_barcodes = new List<string>();
+            int nItemIndex = 0;
+            foreach (ChargingItemWrapper wrapper in history_loader)
+            {
+                ChargingItem item = wrapper.Item;
+                ChargingItem rel = wrapper.RelatedItem;
+
+                
+
+                string strItemBarcode = item.ItemBarcode;
+                string strBorrowDate = rel == null ? "" : rel.OperTime;
+                string strBorrowPeriod = GetDisplayTimePeriodString(rel == null ? "" : rel.Period);
+                string strReturnDate = item.OperTime;
+                //string strRecPath = borrow.GetAttribute("recPath");
+                //string strIsOverdue = borrow.GetAttribute("isOverdue");
+                //bool bIsOverdue = DomUtil.IsBooleanTrue(strIsOverdue, false);
+                //string strOverdueInfo = borrow.GetAttribute("overdueInfo1");
+
+                string strSummary = "@itemBarcode:" + strItemBarcode;
+
+                item_barcodes.Add("@itemBarcode:" + strItemBarcode);
+
+                List<string> cols = new List<string>();
+                cols.Add((nItemIndex + 1).ToString());
+                cols.Add(strItemBarcode);
+                cols.Add(strSummary);
+
+                cols.Add(strBorrowDate);
+                cols.Add(strBorrowPeriod);
+                cols.Add(rel == null ? "" : rel.Operator);
+
+                cols.Add(strReturnDate);
+                cols.Add(item.Operator);
+
+                string line = "<tr>";
+                //int nColIndex = 2;
+                //points.Add(new Point(nColIndex + 2, nRowIndex));
+                foreach (string s in cols)
+                {
+                    line += "<td>"+s+"</td>";
+                }
+                line += "</tr>";
+
+
+                info += line;
+
+                first = wrapper;
+            }
+
+            info += "</table>";
+
+            // 加入书目摘要
+            summary_loader.RecPaths = item_barcodes;
+            foreach (BiblioItem biblio in summary_loader)
+            {
+                string recPath = biblio.RecPath;
+                string summery=biblio.Content;
+
+                info = info.Replace(recPath, summery);
+
+            }
+
+            //// 册信息标题下的虚线
+            //var rngData = sheet.Range(cells[0], cells[cells.Count - 1]);
+            //rngData.FirstRow().Style.Border.TopBorder = XLBorderStyleValues.Dotted;
+
+            //sheet.Rows(nStartRow + 1, nRowIndex - 1).Group();
+        }
+
+#endif
+
+===

@@ -1,0 +1,90 @@
+﻿<html>
+    <style type="text/css">
+
+        div.patron {
+            text-align: left;
+            background-color: while;
+            width: 100%;
+        }
+
+        div.patron  span.label{
+            text-align: left;
+
+			width:60px;
+        }
+
+        div.patron  span.value{
+            text-align: left;
+            background-color: #EEEEEE;
+			width:80px;
+        }
+
+        span.linevalue{
+            text-align: left;
+            background-color: #EEEEEE;
+        }
+
+        span.yellowvalue{
+            text-align: left;
+            background-color: yellow;
+        }
+
+		.grayline{
+			background-color: #EEEEEE;
+		}
+
+		 .historyTable {
+            /*text-align: left;*/
+            /*background-color: white;*/
+            /*width: 100%;*/
+            border:1px solid gray;
+        }
+
+		 .clcTable {
+            /*text-align: left;*/
+            /*background-color: white;*/
+            /*width: 100%;*/
+            border:1px solid gray;
+        }
+
+		.yearTable {
+            /*text-align: left;*/
+            /*background-color: white;*/
+            /*width: 100%;*/
+            border:1px solid gray;
+        }
+
+	</style>
+	<body>
+		<div class='patron''>
+			<span class='label'>姓名</span><span class='value'>%name%</span>
+			<span class='label'>性别</span><span class='value'>%gender%</span>
+			<span class='label'>班级</span><span class='value'>%department%</span>
+		</div>
+		<br/>
+		<div>
+			首次借阅时间为<span class='linevalue'>%firstCheckoutDate%</span><br/>
+			到目前共借阅图书<span class='linevalue'>%checkoutCount%</span>册</br>
+			在读者排行榜第<span class='yellowvalue'>%rank%</span>位，击败了<span class='yellowvalue'>%rankPercentage%</span>的读者。
+		</div>
+		<br/>
+		<div>
+			<div>借阅历史</div>
+			%latestCheckoutTable%
+		</div>
+
+		<br/>
+		<div>
+			数据分析一<br/>
+			所借图书涵盖了%covertClcCount%个种类（图书馆的书共分22个大类）</br>
+			%clcTable%
+		</div>
+
+		<br/>
+		<div>
+			数据分析二<br/>
+			%yearTable%
+		</div>
+
+	</body>
+</html>
