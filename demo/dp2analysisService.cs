@@ -51,11 +51,8 @@ namespace demo
         public string dp2ServerUrl { get; set; }
         public string dp2Username{get;set;}
         public string dp2Password { get; set; }
-
-
         void _channelPool_BeforeLogin(object sender, BeforeLoginEventArgs e)
-        {
-            
+        {           
             if (string.IsNullOrEmpty(this.dp2Username))
             {
                 e.Cancel = true;

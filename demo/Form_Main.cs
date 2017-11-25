@@ -55,15 +55,23 @@ namespace demo
             string html = s.ReadToEnd();
 
             // 先获取读者信息
-            string patronBarcode = this.textBox_patron.Text.Trim();
             Patron patron = null;
-            string error = "";
-            int nRet = dp2analysisService.Instance.GetPatronInfo(patronBarcode,
-                out patron,
-                out error);
-            if (nRet == -1)
+            try
             {
-                MessageBox.Show(this, error);
+                string patronBarcode = this.textBox_patron.Text.Trim();
+                string error = "";
+                int nRet = dp2analysisService.Instance.GetPatronInfo(patronBarcode,
+                    out patron,
+                    out error);
+                if (nRet == -1)
+                {
+                    MessageBox.Show(this, error);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 return;
             }
 
