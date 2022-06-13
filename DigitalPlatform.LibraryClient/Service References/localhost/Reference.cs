@@ -281,6 +281,18 @@ namespace DigitalPlatform.LibraryClient.localhost {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         PartialDenied = 23,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NotFoundObjectFile = 24,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Compressed = 25,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RequestError = 100,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RequestTimeOut = 112,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -467,6 +479,39 @@ namespace DigitalPlatform.LibraryClient.localhost {
         ClientVersionTooOld = 34,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
+        NotBorrowed = 35,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NotChanged = 36,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ServerTimeout = 37,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AlreadyBorrowed = 38,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AlreadyBorrowedByOther = 39,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SyncDenied = 40,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PasswordExpired = 41,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        BarcodeDup = 42,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        DisplayNameDup = 43,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RefIdDup = 44,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Canceled = 45,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
         AlreadyExist = 100,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -504,6 +549,12 @@ namespace DigitalPlatform.LibraryClient.localhost {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         TimestampMismatch = 113,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Compressed = 114,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NotFoundObjectFile = 115,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -1142,6 +1193,9 @@ namespace DigitalPlatform.LibraryClient.localhost {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PeriodField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VolumeField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1308,6 +1362,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Volume {
+            get {
+                return this.VolumeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VolumeField, value) != true)) {
+                    this.VolumeField = value;
+                    this.RaisePropertyChanged("Volume");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1458,6 +1525,9 @@ namespace DigitalPlatform.LibraryClient.localhost {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TextField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string XmlField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1490,6 +1560,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((object.ReferenceEquals(this.TextField, value) != true)) {
                     this.TextField = value;
                     this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Xml {
+            get {
+                return this.XmlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.XmlField, value) != true)) {
+                    this.XmlField = value;
+                    this.RaisePropertyChanged("Xml");
                 }
             }
         }
@@ -1934,13 +2017,22 @@ namespace DigitalPlatform.LibraryClient.localhost {
         private long BorrowCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BorrowIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string BorrowOperatorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DenyPeriodField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ItemBarcodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LatestReturnTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] OverflowsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PeriodField;
@@ -1964,6 +2056,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((this.BorrowCountField.Equals(value) != true)) {
                     this.BorrowCountField = value;
                     this.RaisePropertyChanged("BorrowCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BorrowID {
+            get {
+                return this.BorrowIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BorrowIDField, value) != true)) {
+                    this.BorrowIDField = value;
+                    this.RaisePropertyChanged("BorrowID");
                 }
             }
         }
@@ -1995,6 +2100,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ItemBarcode {
+            get {
+                return this.ItemBarcodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemBarcodeField, value) != true)) {
+                    this.ItemBarcodeField = value;
+                    this.RaisePropertyChanged("ItemBarcode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string LatestReturnTime {
             get {
                 return this.LatestReturnTimeField;
@@ -2003,6 +2121,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((object.ReferenceEquals(this.LatestReturnTimeField, value) != true)) {
                     this.LatestReturnTimeField = value;
                     this.RaisePropertyChanged("LatestReturnTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Overflows {
+            get {
+                return this.OverflowsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OverflowsField, value) != true)) {
+                    this.OverflowsField = value;
+                    this.RaisePropertyChanged("Overflows");
                 }
             }
         }
@@ -2046,10 +2177,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
         private long BorrowCountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BorrowIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string BorrowOperatorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string BorrowTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BorrowerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ItemBarcodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LatestReturnTimeField;
@@ -2065,6 +2205,9 @@ namespace DigitalPlatform.LibraryClient.localhost {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReturnOperatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VolumeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2103,6 +2246,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BorrowID {
+            get {
+                return this.BorrowIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BorrowIDField, value) != true)) {
+                    this.BorrowIDField = value;
+                    this.RaisePropertyChanged("BorrowID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string BorrowOperator {
             get {
                 return this.BorrowOperatorField;
@@ -2124,6 +2280,32 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((object.ReferenceEquals(this.BorrowTimeField, value) != true)) {
                     this.BorrowTimeField = value;
                     this.RaisePropertyChanged("BorrowTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Borrower {
+            get {
+                return this.BorrowerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BorrowerField, value) != true)) {
+                    this.BorrowerField = value;
+                    this.RaisePropertyChanged("Borrower");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ItemBarcode {
+            get {
+                return this.ItemBarcodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemBarcodeField, value) != true)) {
+                    this.ItemBarcodeField = value;
+                    this.RaisePropertyChanged("ItemBarcode");
                 }
             }
         }
@@ -2189,6 +2371,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((object.ReferenceEquals(this.ReturnOperatorField, value) != true)) {
                     this.ReturnOperatorField = value;
                     this.RaisePropertyChanged("ReturnOperator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Volume {
+            get {
+                return this.VolumeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VolumeField, value) != true)) {
+                    this.VolumeField = value;
+                    this.RaisePropertyChanged("Volume");
                 }
             }
         }
@@ -2655,10 +2850,16 @@ namespace DigitalPlatform.LibraryClient.localhost {
         private string CountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OutputParamField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ParamField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StartField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool WaitForBeginField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2697,6 +2898,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OutputParam {
+            get {
+                return this.OutputParamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OutputParamField, value) != true)) {
+                    this.OutputParamField = value;
+                    this.RaisePropertyChanged("OutputParam");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Param {
             get {
                 return this.ParamField;
@@ -2718,6 +2932,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((object.ReferenceEquals(this.StartField, value) != true)) {
                     this.StartField = value;
                     this.RaisePropertyChanged("Start");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool WaitForBegin {
+            get {
+                return this.WaitForBeginField;
+            }
+            set {
+                if ((this.WaitForBeginField.Equals(value) != true)) {
+                    this.WaitForBeginField = value;
+                    this.RaisePropertyChanged("WaitForBegin");
                 }
             }
         }
@@ -2752,6 +2979,9 @@ namespace DigitalPlatform.LibraryClient.localhost {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LibraryCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
@@ -2826,6 +3056,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((object.ReferenceEquals(this.LibraryCodeField, value) != true)) {
                     this.LibraryCodeField = value;
                     this.RaisePropertyChanged("LibraryCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Location {
+            get {
+                return this.LocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
+                    this.LocationField = value;
+                    this.RaisePropertyChanged("Location");
                 }
             }
         }
@@ -2927,6 +3170,9 @@ namespace DigitalPlatform.LibraryClient.localhost {
         private string LangField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LibraryCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2999,6 +3245,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((object.ReferenceEquals(this.LangField, value) != true)) {
                     this.LangField = value;
                     this.RaisePropertyChanged("Lang");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastTime {
+            get {
+                return this.LastTimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastTimeField, value) != true)) {
+                    this.LastTimeField = value;
+                    this.RaisePropertyChanged("LastTime");
                 }
             }
         }
@@ -3293,6 +3552,9 @@ namespace DigitalPlatform.LibraryClient.localhost {
         private string[] ColsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DetailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PathField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -3320,6 +3582,19 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 if ((object.ReferenceEquals(this.ColsField, value) != true)) {
                     this.ColsField = value;
                     this.RaisePropertyChanged("Cols");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Detail {
+            get {
+                return this.DetailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetailField, value) != true)) {
+                    this.DetailField = value;
+                    this.RaisePropertyChanged("Detail");
                 }
             }
         }
@@ -3435,378 +3710,386 @@ namespace DigitalPlatform.LibraryClient.localhost {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://dp2003.com/dp2library/rest", ConfigurationName="localhost.dp2libraryREST", SessionMode=System.ServiceModel.SessionMode.NotAllowed)]
-    public interface dp2libraryREST {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://dp2003.com/dp2library/", ConfigurationName="localhost.dp2library", SessionMode=System.ServiceModel.SessionMode.Required)]
+    public interface dp2library {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetComments", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCommentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetComments", ReplyAction="http://dp2003.com/dp2library/dp2library/SetCommentsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetComments(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] commentinfos);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetComments", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCommentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetComments", ReplyAction="http://dp2003.com/dp2library/dp2library/SetCommentsResponse")]
         System.IAsyncResult BeginSetComments(string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] commentinfos, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetComments(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetCommentInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCommentInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetCommentInfo(out string strResult, out string strCommentRecPath, out byte[] comment_timestamp, out string strBiblio, out string strOutputBiblioRecPath, string strRefID, string strItemXml, string strResultType, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetCommentInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCommentInfoResponse")]
         System.IAsyncResult BeginGetCommentInfo(string strRefID, string strItemXml, string strResultType, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetCommentInfo(out string strResult, out string strCommentRecPath, out byte[] comment_timestamp, out string strBiblio, out string strOutputBiblioRecPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchCommentDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchCommentDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchCommentDup(out string[] paths, string strIndex, string strBiblioRecPath, int nMax);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchCommentDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchCommentDupResponse")]
         System.IAsyncResult BeginSearchCommentDup(string strIndex, string strBiblioRecPath, int nMax, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchCommentDup(out string[] paths, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchComment", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchComment", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchCommentResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchComment(string strCommentDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchComment", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchComment", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchCommentResponse")]
         System.IAsyncResult BeginSearchComment(string strCommentDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchComment(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/GetMessageResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetMessage(out DigitalPlatform.LibraryClient.localhost.MessageData[] messages, string[] message_ids, DigitalPlatform.LibraryClient.localhost.MessageLevel messagelevel);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/GetMessageResponse")]
         System.IAsyncResult BeginGetMessage(string[] message_ids, DigitalPlatform.LibraryClient.localhost.MessageLevel messagelevel, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetMessage(out DigitalPlatform.LibraryClient.localhost.MessageData[] messages, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ListMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/ListMessageResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListMessage(out int nTotalCount, out DigitalPlatform.LibraryClient.localhost.MessageData[] messages, string strStyle, string strResultsetName, string strBoxType, DigitalPlatform.LibraryClient.localhost.MessageLevel messagelevel, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ListMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/ListMessageResponse")]
         System.IAsyncResult BeginListMessage(string strStyle, string strResultsetName, string strBoxType, DigitalPlatform.LibraryClient.localhost.MessageLevel messagelevel, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndListMessage(out int nTotalCount, out DigitalPlatform.LibraryClient.localhost.MessageData[] messages, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/SetMessageResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetMessage(out DigitalPlatform.LibraryClient.localhost.MessageData[] output_messages, string strAction, string strStyle, DigitalPlatform.LibraryClient.localhost.MessageData[] messages);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/SetMessageResponse")]
         System.IAsyncResult BeginSetMessage(string strAction, string strStyle, DigitalPlatform.LibraryClient.localhost.MessageData[] messages, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetMessage(out DigitalPlatform.LibraryClient.localhost.MessageData[] output_messages, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetStatisInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetStatisInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetStatisInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetStatisInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetStatisInfo(out DigitalPlatform.LibraryClient.localhost.RangeStatisInfo info, out string strXml, string strDateRangeString, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetStatisInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetStatisInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetStatisInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetStatisInfoResponse")]
         System.IAsyncResult BeginGetStatisInfo(string strDateRangeString, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetStatisInfo(out DigitalPlatform.LibraryClient.localhost.RangeStatisInfo info, out string strXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ExistStatisInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ExistStatisInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ExistStatisInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/ExistStatisInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ExistStatisInfo(out DigitalPlatform.LibraryClient.localhost.DateExist[] dates, string strDateRangeString);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ExistStatisInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ExistStatisInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ExistStatisInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/ExistStatisInfoResponse")]
         System.IAsyncResult BeginExistStatisInfo(string strDateRangeString, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndExistStatisInfo(out DigitalPlatform.LibraryClient.localhost.DateExist[] dates, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetFile", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetFileResponse")]
-        DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetFile(out byte[] baContent, out string strFileTime, string strCategory, string strFileName, long lStart, long lLength);
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetFile", ReplyAction="http://dp2003.com/dp2library/dp2library/GetFileResponse")]
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetFile(out byte[] baContent, out string strFileTime, string strCategory, string strFileName, long lStart, long lLength, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetFile", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetFileResponse")]
-        System.IAsyncResult BeginGetFile(string strCategory, string strFileName, long lStart, long lLength, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetFile", ReplyAction="http://dp2003.com/dp2library/dp2library/GetFileResponse")]
+        System.IAsyncResult BeginGetFile(string strCategory, string strFileName, long lStart, long lLength, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetFile(out byte[] baContent, out string strFileTime, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListFile", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListFileResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ListFile", ReplyAction="http://dp2003.com/dp2library/dp2library/ListFileResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListFile(out DigitalPlatform.LibraryClient.localhost.FileItemInfo[] infos, string strAction, string strCategory, string strFileName, long lStart, long lLength);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListFile", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListFileResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ListFile", ReplyAction="http://dp2003.com/dp2library/dp2library/ListFileResponse")]
         System.IAsyncResult BeginListFile(string strAction, string strCategory, string strFileName, long lStart, long lLength, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndListFile(out DigitalPlatform.LibraryClient.localhost.FileItemInfo[] infos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/HitCounter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/HitCounterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/HitCounter", ReplyAction="http://dp2003.com/dp2library/dp2library/HitCounterResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult HitCounter(out long Value, string strAction, string strName, string strClientAddress);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/HitCounter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/HitCounterResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/HitCounter", ReplyAction="http://dp2003.com/dp2library/dp2library/HitCounterResponse")]
         System.IAsyncResult BeginHitCounter(string strAction, string strName, string strClientAddress, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndHitCounter(out long Value, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCharging", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchChargingResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchCharging", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchChargingResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchCharging(out DigitalPlatform.LibraryClient.localhost.ChargingItemWrapper[] results, string patronBarcode, string timeRange, string actions, string order, long start, long count);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCharging", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchChargingResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchCharging", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchChargingResponse")]
         System.IAsyncResult BeginSearchCharging(string patronBarcode, string timeRange, string actions, string order, long start, long count, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchCharging(out DigitalPlatform.LibraryClient.localhost.ChargingItemWrapper[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/BindPatron", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BindPatronResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/BindPatron", ReplyAction="http://dp2003.com/dp2library/dp2library/BindPatronResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult BindPatron(out string[] results, string strAction, string strQueryWord, string strPassword, string strBindingID, string strStyle, string strResultTypeList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/BindPatron", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BindPatronResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/BindPatron", ReplyAction="http://dp2003.com/dp2library/dp2library/BindPatronResponse")]
         System.IAsyncResult BeginBindPatron(string strAction, string strQueryWord, string strPassword, string strBindingID, string strStyle, string strResultTypeList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndBindPatron(out string[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Dir", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/DirResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Dir", ReplyAction="http://dp2003.com/dp2library/dp2library/DirResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Dir(out DigitalPlatform.LibraryClient.localhost.ResInfoItem[] items, out DigitalPlatform.LibraryClient.localhost.ErrorCodeValue kernel_errorcode, string strResPath, long lStart, long lLength, string strLang, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Dir", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/DirResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Dir", ReplyAction="http://dp2003.com/dp2library/dp2library/DirResponse")]
         System.IAsyncResult BeginDir(string strResPath, long lStart, long lLength, string strLang, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndDir(out DigitalPlatform.LibraryClient.localhost.ResInfoItem[] items, out DigitalPlatform.LibraryClient.localhost.ErrorCodeValue kernel_errorcode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetAuthorNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetAuthorNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetAuthorNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetAuthorNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetAuthorNumber(string strAuthor, bool bSelectPinyin, bool bSelectEntry, bool bOutputDebugInfo, ref DigitalPlatform.LibraryClient.localhost.Question[] questions, out string strNumber, out string strDebugInfo);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetAuthorNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetAuthorNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetAuthorNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetAuthorNumberResponse")]
         System.IAsyncResult BeginGetAuthorNumber(string strAuthor, bool bSelectPinyin, bool bSelectEntry, bool bOutputDebugInfo, ref DigitalPlatform.LibraryClient.localhost.Question[] questions, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetAuthorNumber(ref DigitalPlatform.LibraryClient.localhost.Question[] questions, out string strNumber, out string strDebugInfo, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetPinyin", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetPinyinResponse")]
-        DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetPinyin(out string strPinyinXml, string strText);
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetPinyin", ReplyAction="http://dp2003.com/dp2library/dp2library/GetPinyinResponse")]
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetPinyin(out string strPinyinXml, string strType, string strText);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetPinyin", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetPinyinResponse")]
-        System.IAsyncResult BeginGetPinyin(string strText, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetPinyin", ReplyAction="http://dp2003.com/dp2library/dp2library/GetPinyinResponse")]
+        System.IAsyncResult BeginGetPinyin(string strType, string strText, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetPinyin(out string strPinyinXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetPinyin", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetPinyinResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetPinyin", ReplyAction="http://dp2003.com/dp2library/dp2library/SetPinyinResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetPinyin(string strPinyinXml);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetPinyin", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetPinyinResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetPinyin", ReplyAction="http://dp2003.com/dp2library/dp2library/SetPinyinResponse")]
         System.IAsyncResult BeginSetPinyin(string strPinyinXml, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetPinyin(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetVersion", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetVersionResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/OnlineStatis", ReplyAction="http://dp2003.com/dp2library/dp2library/OnlineStatisResponse")]
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult OnlineStatis(out string[] results, string action, string category, string uid, string style);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/OnlineStatis", ReplyAction="http://dp2003.com/dp2library/dp2library/OnlineStatisResponse")]
+        System.IAsyncResult BeginOnlineStatis(string action, string category, string uid, string style, System.AsyncCallback callback, object asyncState);
+        
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndOnlineStatis(out string[] results, System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetVersion", ReplyAction="http://dp2003.com/dp2library/dp2library/GetVersionResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetVersion(out string uid);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetVersion", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetVersionResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetVersion", ReplyAction="http://dp2003.com/dp2library/dp2library/GetVersionResponse")]
         System.IAsyncResult BeginGetVersion(System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetVersion(out string uid, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Login", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Login", ReplyAction="http://dp2003.com/dp2library/dp2library/LoginResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Login(out string strOutputUserName, out string strRights, out string strLibraryCode, string strUserName, string strPassword, string strParameters);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Login", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Login", ReplyAction="http://dp2003.com/dp2library/dp2library/LoginResponse")]
         System.IAsyncResult BeginLogin(string strUserName, string strPassword, string strParameters, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndLogin(out string strOutputUserName, out string strRights, out string strLibraryCode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Logout", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/LogoutResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Logout", ReplyAction="http://dp2003.com/dp2library/dp2library/LogoutResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Logout();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Logout", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/LogoutResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Logout", ReplyAction="http://dp2003.com/dp2library/dp2library/LogoutResponse")]
         System.IAsyncResult BeginLogout(System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndLogout(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetLang", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetLangResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetLang", ReplyAction="http://dp2003.com/dp2library/dp2library/SetLangResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetLang(out string strOldLang, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetLang", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetLangResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetLang", ReplyAction="http://dp2003.com/dp2library/dp2library/SetLangResponse")]
         System.IAsyncResult BeginSetLang(string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetLang(out string strOldLang, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Stop")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, IsInitiating=false, Action="http://dp2003.com/dp2library/dp2library/Stop")]
         void Stop();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Stop")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, IsInitiating=false, AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Stop")]
         System.IAsyncResult BeginStop(System.AsyncCallback callback, object asyncState);
         
         void EndStop(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyReaderPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyReaderPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/VerifyReaderPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/VerifyReaderPasswordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult VerifyReaderPassword(string strReaderBarcode, string strReaderPassword);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyReaderPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyReaderPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/VerifyReaderPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/VerifyReaderPasswordResponse")]
         System.IAsyncResult BeginVerifyReaderPassword(string strReaderBarcode, string strReaderPassword, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndVerifyReaderPassword(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeReaderPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeReaderPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ChangeReaderPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ChangeReaderPasswordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ChangeReaderPassword(string strReaderBarcode, string strReaderOldPassword, string strReaderNewPassword);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeReaderPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeReaderPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ChangeReaderPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ChangeReaderPasswordResponse")]
         System.IAsyncResult BeginChangeReaderPassword(string strReaderBarcode, string strReaderOldPassword, string strReaderNewPassword, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndChangeReaderPassword(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetReaderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetReaderInfo(out string[] results, out string strRecPath, out byte[] baTimestamp, string strBarcode, string strResultTypeList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetReaderInfoResponse")]
         System.IAsyncResult BeginGetReaderInfo(string strBarcode, string strResultTypeList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetReaderInfo(out string[] results, out string strRecPath, out byte[] baTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetReaderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetReaderInfo(out string strExistingXml, out string strSavedXml, out string strSavedRecPath, out byte[] baNewTimestamp, out DigitalPlatform.LibraryClient.localhost.ErrorCodeValue kernel_errorcode, string strAction, string strRecPath, string strNewXml, string strOldXml, byte[] baOldTimestamp);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetReaderInfoResponse")]
         System.IAsyncResult BeginSetReaderInfo(string strAction, string strRecPath, string strNewXml, string strOldXml, byte[] baOldTimestamp, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetReaderInfo(out string strExistingXml, out string strSavedXml, out string strSavedRecPath, out byte[] baNewTimestamp, out DigitalPlatform.LibraryClient.localhost.ErrorCodeValue kernel_errorcode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/MoveReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/MoveReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/MoveReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/MoveReaderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult MoveReaderInfo(string strSourceRecPath, ref string strTargetRecPath, out byte[] target_timestamp);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/MoveReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/MoveReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/MoveReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/MoveReaderInfoResponse")]
         System.IAsyncResult BeginMoveReaderInfo(string strSourceRecPath, ref string strTargetRecPath, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndMoveReaderInfo(ref string strTargetRecPath, out byte[] target_timestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/DevolveReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/DevolveReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/DevolveReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/DevolveReaderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult DevolveReaderInfo(string strSourceReaderBarcode, string strTargetReaderBarcode);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/DevolveReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/DevolveReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/DevolveReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/DevolveReaderInfoResponse")]
         System.IAsyncResult BeginDevolveReaderInfo(string strSourceReaderBarcode, string strTargetReaderBarcode, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndDevolveReaderInfo(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchReader", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchReaderResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchReader", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchReaderResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchReader(string strReaderDbNames, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchReader", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchReaderResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchReader", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchReaderResponse")]
         System.IAsyncResult BeginSearchReader(string strReaderDbNames, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchReader(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetFriends", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetFriendsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetFriends", ReplyAction="http://dp2003.com/dp2library/dp2library/SetFriendsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetFriends(string strAction, string strReaderBarcode, string strComment, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetFriends", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetFriendsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetFriends", ReplyAction="http://dp2003.com/dp2library/dp2library/SetFriendsResponse")]
         System.IAsyncResult BeginSetFriends(string strAction, string strReaderBarcode, string strComment, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetFriends(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneDb", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneDbResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchOneDb", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOneDbResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchOneDb(string strQueryWord, string strDbName, string strFrom, string strMatchStyle, string strLang, long lMaxCount, string strResultSetName, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneDb", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneDbResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchOneDb", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOneDbResponse")]
         System.IAsyncResult BeginSearchOneDb(string strQueryWord, string strDbName, string strFrom, string strMatchStyle, string strLang, long lMaxCount, string strResultSetName, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchOneDb(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Search", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Search", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Search(string strQueryXml, string strResultSetName, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Search", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Search", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchResponse")]
         System.IAsyncResult BeginSearch(string strQueryXml, string strResultSetName, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearch(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetSearchResultResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetSearchResult(out DigitalPlatform.LibraryClient.localhost.Record[] searchresults, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetSearchResultResponse")]
         System.IAsyncResult BeginGetSearchResult(string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetSearchResult(out DigitalPlatform.LibraryClient.localhost.Record[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRecord", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRecordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetRecord", ReplyAction="http://dp2003.com/dp2library/dp2library/GetRecordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetRecord(out byte[] timestamp, out string strXml, string strPath);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRecord", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRecordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetRecord", ReplyAction="http://dp2003.com/dp2library/dp2library/GetRecordResponse")]
         System.IAsyncResult BeginGetRecord(string strPath, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetRecord(out byte[] timestamp, out string strXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBrowseRecords", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBrowseRecordsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetBrowseRecords", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBrowseRecordsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetBrowseRecords(out DigitalPlatform.LibraryClient.localhost.Record[] searchresults, string[] paths, string strBrowseInfoStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBrowseRecords", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBrowseRecordsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetBrowseRecords", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBrowseRecordsResponse")]
         System.IAsyncResult BeginGetBrowseRecords(string[] paths, string strBrowseInfoStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetBrowseRecords(out DigitalPlatform.LibraryClient.localhost.Record[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListBiblioDbFroms", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListBiblioDbFromsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ListBiblioDbFroms", ReplyAction="http://dp2003.com/dp2library/dp2library/ListBiblioDbFromsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListBiblioDbFroms(out DigitalPlatform.LibraryClient.localhost.BiblioDbFromInfo[] infos, string strDbType, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListBiblioDbFroms", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListBiblioDbFromsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ListBiblioDbFroms", ReplyAction="http://dp2003.com/dp2library/dp2library/ListBiblioDbFromsResponse")]
         System.IAsyncResult BeginListBiblioDbFroms(string strDbType, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndListBiblioDbFroms(out DigitalPlatform.LibraryClient.localhost.BiblioDbFromInfo[] infos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchBiblio", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchBiblioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchBiblio", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchBiblioResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchBiblio(out string strQueryXml, string strBiblioDbNames, string strQueryWord, int nPerMax, string strFromStyle, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, string strLocationFilter);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchBiblio", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchBiblioResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchBiblio", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchBiblioResponse")]
         System.IAsyncResult BeginSearchBiblio(string strBiblioDbNames, string strQueryWord, int nPerMax, string strFromStyle, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, string strLocationFilter, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchBiblio(out string strQueryXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetBiblioInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetBiblioInfo(out string strOutputBiblioRecPath, out byte[] baOutputTimestamp, string strAction, string strBiblioRecPath, string strBiblioType, string strBiblio, byte[] baTimestamp, string strComment, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetBiblioInfoResponse")]
         System.IAsyncResult BeginSetBiblioInfo(string strAction, string strBiblioRecPath, string strBiblioType, string strBiblio, byte[] baTimestamp, string strComment, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetBiblioInfo(out string strOutputBiblioRecPath, out byte[] baOutputTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/CopyBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/CopyBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/CopyBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/CopyBiblioInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult CopyBiblioInfo(out string strOutputBiblio, out string strOutputBiblioRecPath, out byte[] baOutputTimestamp, string strAction, string strBiblioRecPath, string strBiblioType, string strBiblio, byte[] baTimestamp, string strNewBiblioRecPath, string strNewBiblio, string strMergeStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/CopyBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/CopyBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/CopyBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/CopyBiblioInfoResponse")]
         System.IAsyncResult BeginCopyBiblioInfo(string strAction, string strBiblioRecPath, string strBiblioType, string strBiblio, byte[] baTimestamp, string strNewBiblioRecPath, string strNewBiblio, string strMergeStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndCopyBiblioInfo(out string strOutputBiblio, out string strOutputBiblioRecPath, out byte[] baOutputTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetBiblioInfo(out string strBiblio, string strBiblioRecPath, string strBiblioXml, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioInfoResponse")]
         System.IAsyncResult BeginGetBiblioInfo(string strBiblioRecPath, string strBiblioXml, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetBiblioInfo(out string strBiblio, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfos", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetBiblioInfos", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioInfosResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetBiblioInfos(out string[] results, out byte[] baTimestamp, string strBiblioRecPath, string strBiblioXml, string[] formats);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfos", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfosResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetBiblioInfos", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioInfosResponse")]
         System.IAsyncResult BeginGetBiblioInfos(string strBiblioRecPath, string strBiblioXml, string[] formats, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetBiblioInfos(out string[] results, out byte[] baTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItem", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchItem", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchItemResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchItem(string strItemDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItem", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchItem", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchItemResponse")]
         System.IAsyncResult BeginSearchItem(string strItemDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchItem(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetItemInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetItemInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetItemInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetItemInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetItemInfo(out string strResult, out string strItemRecPath, out byte[] item_timestamp, out string strBiblio, out string strBiblioRecPath, string strItemDbType, string strBarcode, string strItemXml, string strResultType, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetItemInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetItemInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetItemInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetItemInfoResponse")]
         System.IAsyncResult BeginGetItemInfo(string strItemDbType, string strBarcode, string strItemXml, string strResultType, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetItemInfo(out string strResult, out string strItemRecPath, out byte[] item_timestamp, out string strBiblio, out string strBiblioRecPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchItemDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchItemDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchItemDup(out string[] paths, string strBarcode, int nMax);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchItemDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchItemDupResponse")]
         System.IAsyncResult BeginSearchItemDup(string strBarcode, int nMax, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchItemDup(out string[] paths, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioSummary", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioSummaryResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetBiblioSummary", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioSummaryResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetBiblioSummary(out string strBiblioRecPath, out string strSummary, string strItemBarcode, string strConfirmItemRecPath, string strBiblioRecPathExclude);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioSummary", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioSummaryResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetBiblioSummary", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioSummaryResponse")]
         System.IAsyncResult BeginGetBiblioSummary(string strItemBarcode, string strConfirmItemRecPath, string strBiblioRecPathExclude, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetBiblioSummary(out string strBiblioRecPath, out string strSummary, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Borrow", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BorrowResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Borrow", ReplyAction="http://dp2003.com/dp2library/dp2library/BorrowResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Borrow(
                     out string[] item_records, 
                     out string[] reader_records, 
@@ -3825,468 +4108,462 @@ namespace DigitalPlatform.LibraryClient.localhost {
                     string strReaderFormatList, 
                     string strBiblioFormatList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Borrow", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BorrowResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Borrow", ReplyAction="http://dp2003.com/dp2library/dp2library/BorrowResponse")]
         System.IAsyncResult BeginBorrow(bool bRenew, string strReaderBarcode, string strItemBarcode, string strConfirmItemRecPath, bool bForce, string[] saBorrowedItemBarcode, string strStyle, string strItemFormatList, string strReaderFormatList, string strBiblioFormatList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndBorrow(out string[] item_records, out string[] reader_records, out string[] biblio_records, out DigitalPlatform.LibraryClient.localhost.BorrowInfo borrow_info, out string[] aDupPath, out string strOutputReaderBarcode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Return", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ReturnResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Return", ReplyAction="http://dp2003.com/dp2library/dp2library/ReturnResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Return(out string[] item_records, out string[] reader_records, out string[] biblio_records, out string[] aDupPath, out string strOutputReaderBarcode, out DigitalPlatform.LibraryClient.localhost.ReturnInfo return_info, string strAction, string strReaderBarcode, string strItemBarcode, string strComfirmItemRecPath, bool bForce, string strStyle, string strItemFormatList, string strReaderFormatList, string strBiblioFormatList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Return", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ReturnResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Return", ReplyAction="http://dp2003.com/dp2library/dp2library/ReturnResponse")]
         System.IAsyncResult BeginReturn(string strAction, string strReaderBarcode, string strItemBarcode, string strComfirmItemRecPath, bool bForce, string strStyle, string strItemFormatList, string strReaderFormatList, string strBiblioFormatList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndReturn(out string[] item_records, out string[] reader_records, out string[] biblio_records, out string[] aDupPath, out string strOutputReaderBarcode, out DigitalPlatform.LibraryClient.localhost.ReturnInfo return_info, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Reservation", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ReservationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Reservation", ReplyAction="http://dp2003.com/dp2library/dp2library/ReservationResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Reservation(string strFunction, string strReaderBarcode, string strItemBarcodeList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Reservation", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ReservationResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Reservation", ReplyAction="http://dp2003.com/dp2library/dp2library/ReservationResponse")]
         System.IAsyncResult BeginReservation(string strFunction, string strReaderBarcode, string strItemBarcodeList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndReservation(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Amerce", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/AmerceResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Amerce", ReplyAction="http://dp2003.com/dp2library/dp2library/AmerceResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Amerce(out DigitalPlatform.LibraryClient.localhost.AmerceItem[] failed_items, out string strReaderXml, string strFunction, string strReaderBarcode, DigitalPlatform.LibraryClient.localhost.AmerceItem[] amerce_items);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Amerce", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/AmerceResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Amerce", ReplyAction="http://dp2003.com/dp2library/dp2library/AmerceResponse")]
         System.IAsyncResult BeginAmerce(string strFunction, string strReaderBarcode, DigitalPlatform.LibraryClient.localhost.AmerceItem[] amerce_items, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndAmerce(out DigitalPlatform.LibraryClient.localhost.AmerceItem[] failed_items, out string strReaderXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssues", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetIssues", ReplyAction="http://dp2003.com/dp2library/dp2library/GetIssuesResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetIssues(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] issueinfos, string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssues", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetIssues", ReplyAction="http://dp2003.com/dp2library/dp2library/GetIssuesResponse")]
         System.IAsyncResult BeginGetIssues(string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetIssues(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] issueinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetIssues", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetIssuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetIssues", ReplyAction="http://dp2003.com/dp2library/dp2library/SetIssuesResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetIssues(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] issueinfos);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetIssues", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetIssuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetIssues", ReplyAction="http://dp2003.com/dp2library/dp2library/SetIssuesResponse")]
         System.IAsyncResult BeginSetIssues(string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] issueinfos, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetIssues(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssueInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssueInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetIssueInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetIssueInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetIssueInfo(out string strResult, out string strIssueRecPath, out byte[] issue_timestamp, out string strBiblio, out string strOutputBiblioRecPath, string strRefID, string strItemXml, string strResultType, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssueInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssueInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetIssueInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetIssueInfoResponse")]
         System.IAsyncResult BeginGetIssueInfo(string strRefID, string strItemXml, string strResultType, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetIssueInfo(out string strResult, out string strIssueRecPath, out byte[] issue_timestamp, out string strBiblio, out string strOutputBiblioRecPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchIssueDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchIssueDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchIssueDup(out string[] paths, string strPublishTime, string strBiblioRecPath, int nMax);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchIssueDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchIssueDupResponse")]
         System.IAsyncResult BeginSearchIssueDup(string strPublishTime, string strBiblioRecPath, int nMax, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchIssueDup(out string[] paths, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssue", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchIssue", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchIssueResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchIssue(string strIssueDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssue", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchIssue", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchIssueResponse")]
         System.IAsyncResult BeginSearchIssue(string strIssueDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchIssue(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetEntities", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetEntitiesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetEntities", ReplyAction="http://dp2003.com/dp2library/dp2library/GetEntitiesResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetEntities(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] entityinfos, string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetEntities", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetEntitiesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetEntities", ReplyAction="http://dp2003.com/dp2library/dp2library/GetEntitiesResponse")]
         System.IAsyncResult BeginGetEntities(string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetEntities(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] entityinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetEntities", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetEntitiesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetEntities", ReplyAction="http://dp2003.com/dp2library/dp2library/SetEntitiesResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetEntities(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] entityinfos);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetEntities", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetEntitiesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetEntities", ReplyAction="http://dp2003.com/dp2library/dp2library/SetEntitiesResponse")]
         System.IAsyncResult BeginSetEntities(string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] entityinfos, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetEntities(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrders", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOrders", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOrdersResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOrders(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] orderinfos, string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrders", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOrders", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOrdersResponse")]
         System.IAsyncResult BeginGetOrders(string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOrders(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] orderinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOrders", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetOrders", ReplyAction="http://dp2003.com/dp2library/dp2library/SetOrdersResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetOrders(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] orderinfos);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOrders", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetOrders", ReplyAction="http://dp2003.com/dp2library/dp2library/SetOrdersResponse")]
         System.IAsyncResult BeginSetOrders(string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] orderinfos, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetOrders(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOrderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOrderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOrderInfo(out string strResult, out string strOrderRecPath, out byte[] order_timestamp, out string strBiblio, out string strOutputBiblioRecPath, string strRefID, string strItemXml, string strResultType, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOrderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOrderInfoResponse")]
         System.IAsyncResult BeginGetOrderInfo(string strRefID, string strItemXml, string strResultType, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOrderInfo(out string strResult, out string strOrderRecPath, out byte[] order_timestamp, out string strBiblio, out string strOutputBiblioRecPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchOrderDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOrderDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchOrderDup(out string[] paths, string strIndex, string strBiblioRecPath, int nMax);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchOrderDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOrderDupResponse")]
         System.IAsyncResult BeginSearchOrderDup(string strIndex, string strBiblioRecPath, int nMax, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchOrderDup(out string[] paths, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrder", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchOrder", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOrderResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchOrder(string strOrderDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrder", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchOrder", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOrderResponse")]
         System.IAsyncResult BeginSearchOrder(string strOrderDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchOrder(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetClock", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetClockResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetClock", ReplyAction="http://dp2003.com/dp2library/dp2library/SetClockResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetClock(string strTime);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetClock", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetClockResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetClock", ReplyAction="http://dp2003.com/dp2library/dp2library/SetClockResponse")]
         System.IAsyncResult BeginSetClock(string strTime, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetClock(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetClock", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetClockResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetClock", ReplyAction="http://dp2003.com/dp2library/dp2library/GetClockResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetClock(out string strTime);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetClock", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetClockResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetClock", ReplyAction="http://dp2003.com/dp2library/dp2library/GetClockResponse")]
         System.IAsyncResult BeginGetClock(System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetClock(out string strTime, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ResetPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ResetPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ResetPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ResetPasswordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ResetPassword(out string strMessage, string strParameters, string strMessageTemplate);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ResetPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ResetPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ResetPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ResetPasswordResponse")]
         System.IAsyncResult BeginResetPassword(string strParameters, string strMessageTemplate, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndResetPassword(out string strMessage, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetValueTable", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetValueTableResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetValueTable", ReplyAction="http://dp2003.com/dp2library/dp2library/GetValueTableResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetValueTable(out string[] values, string strTableName, string strDbName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetValueTable", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetValueTableResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetValueTable", ReplyAction="http://dp2003.com/dp2library/dp2library/GetValueTableResponse")]
         System.IAsyncResult BeginGetValueTable(string strTableName, string strDbName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetValueTable(out string[] values, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogs", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOperLogs", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOperLogsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOperLogs(out DigitalPlatform.LibraryClient.localhost.OperLogInfo[] records, string strFileName, long lIndex, long lHint, int nCount, string strStyle, string strFilter);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogs", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOperLogs", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOperLogsResponse")]
         System.IAsyncResult BeginGetOperLogs(string strFileName, long lIndex, long lHint, int nCount, string strStyle, string strFilter, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOperLogs(out DigitalPlatform.LibraryClient.localhost.OperLogInfo[] records, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLog", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOperLog", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOperLogResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOperLog(out string strXml, out long lHintNext, out byte[] attachment_data, out long lAttachmentTotalLength, string strFileName, long lIndex, long lHint, string strStyle, string strFilter, long lAttachmentFragmentStart, int nAttachmentFragmentLength);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLog", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOperLog", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOperLogResponse")]
         System.IAsyncResult BeginGetOperLog(string strFileName, long lIndex, long lHint, string strStyle, string strFilter, long lAttachmentFragmentStart, int nAttachmentFragmentLength, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOperLog(out string strXml, out long lHintNext, out byte[] attachment_data, out long lAttachmentTotalLength, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCalendar", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCalendarResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetCalendar", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCalendarResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetCalendar(out DigitalPlatform.LibraryClient.localhost.CalenderInfo[] contents, string strAction, string strName, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCalendar", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCalendarResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetCalendar", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCalendarResponse")]
         System.IAsyncResult BeginGetCalendar(string strAction, string strName, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetCalendar(out DigitalPlatform.LibraryClient.localhost.CalenderInfo[] contents, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCalendar", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCalendarResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetCalendar", ReplyAction="http://dp2003.com/dp2library/dp2library/SetCalendarResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetCalendar(string strAction, DigitalPlatform.LibraryClient.localhost.CalenderInfo info);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCalendar", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCalendarResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetCalendar", ReplyAction="http://dp2003.com/dp2library/dp2library/SetCalendarResponse")]
         System.IAsyncResult BeginSetCalendar(string strAction, DigitalPlatform.LibraryClient.localhost.CalenderInfo info, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetCalendar(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/BatchTask", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BatchTaskResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/BatchTask", ReplyAction="http://dp2003.com/dp2library/dp2library/BatchTaskResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult BatchTask(out DigitalPlatform.LibraryClient.localhost.BatchTaskInfo resultInfo, string strName, string strAction, DigitalPlatform.LibraryClient.localhost.BatchTaskInfo info);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/BatchTask", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BatchTaskResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/BatchTask", ReplyAction="http://dp2003.com/dp2library/dp2library/BatchTaskResponse")]
         System.IAsyncResult BeginBatchTask(string strName, string strAction, DigitalPlatform.LibraryClient.localhost.BatchTaskInfo info, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndBatchTask(out DigitalPlatform.LibraryClient.localhost.BatchTaskInfo resultInfo, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ClearAllDbs", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ClearAllDbsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ClearAllDbs", ReplyAction="http://dp2003.com/dp2library/dp2library/ClearAllDbsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ClearAllDbs();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ClearAllDbs", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ClearAllDbsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ClearAllDbs", ReplyAction="http://dp2003.com/dp2library/dp2library/ClearAllDbsResponse")]
         System.IAsyncResult BeginClearAllDbs(System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndClearAllDbs(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageDatabase", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageDatabaseResponse")]
-        DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageDatabase(out string strOutputInfo, string strAction, string strDatabaseName, string strDatabaseInfo);
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ManageDatabase", ReplyAction="http://dp2003.com/dp2library/dp2library/ManageDatabaseResponse")]
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageDatabase(out string strOutputInfo, string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageDatabase", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageDatabaseResponse")]
-        System.IAsyncResult BeginManageDatabase(string strAction, string strDatabaseName, string strDatabaseInfo, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ManageDatabase", ReplyAction="http://dp2003.com/dp2library/dp2library/ManageDatabaseResponse")]
+        System.IAsyncResult BeginManageDatabase(string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndManageDatabase(out string strOutputInfo, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUser", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetUser", ReplyAction="http://dp2003.com/dp2library/dp2library/GetUserResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetUser(out DigitalPlatform.LibraryClient.localhost.UserInfo[] contents, string strAction, string strName, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUser", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetUser", ReplyAction="http://dp2003.com/dp2library/dp2library/GetUserResponse")]
         System.IAsyncResult BeginGetUser(string strAction, string strName, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetUser(out DigitalPlatform.LibraryClient.localhost.UserInfo[] contents, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUser", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetUser", ReplyAction="http://dp2003.com/dp2library/dp2library/SetUserResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetUser(string strAction, DigitalPlatform.LibraryClient.localhost.UserInfo info);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUser", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetUser", ReplyAction="http://dp2003.com/dp2library/dp2library/SetUserResponse")]
         System.IAsyncResult BeginSetUser(string strAction, DigitalPlatform.LibraryClient.localhost.UserInfo info, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetUser(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetChannelInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetChannelInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetChannelInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetChannelInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetChannelInfo(out DigitalPlatform.LibraryClient.localhost.ChannelInfo[] contents, string strQuery, string strStyle, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetChannelInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetChannelInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetChannelInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetChannelInfoResponse")]
         System.IAsyncResult BeginGetChannelInfo(string strQuery, string strStyle, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetChannelInfo(out DigitalPlatform.LibraryClient.localhost.ChannelInfo[] contents, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageChannel", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageChannelResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ManageChannel", ReplyAction="http://dp2003.com/dp2library/dp2library/ManageChannelResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageChannel(out DigitalPlatform.LibraryClient.localhost.ChannelInfo[] results, string strAction, string strStyle, DigitalPlatform.LibraryClient.localhost.ChannelInfo[] requests);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageChannel", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageChannelResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ManageChannel", ReplyAction="http://dp2003.com/dp2library/dp2library/ManageChannelResponse")]
         System.IAsyncResult BeginManageChannel(string strAction, string strStyle, DigitalPlatform.LibraryClient.localhost.ChannelInfo[] requests, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndManageChannel(out DigitalPlatform.LibraryClient.localhost.ChannelInfo[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeUserPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeUserPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ChangeUserPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ChangeUserPasswordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ChangeUserPassword(string strUserName, string strOldPassword, string strNewPassword);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeUserPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeUserPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ChangeUserPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ChangeUserPasswordResponse")]
         System.IAsyncResult BeginChangeUserPassword(string strUserName, string strOldPassword, string strNewPassword, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndChangeUserPassword(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyBarcode", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyBarcodeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/VerifyBarcode", ReplyAction="http://dp2003.com/dp2library/dp2library/VerifyBarcodeResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult VerifyBarcode(out string strOutputBarcode, string strAction, string strLibraryCode, string strBarcode);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyBarcode", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyBarcodeResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/VerifyBarcode", ReplyAction="http://dp2003.com/dp2library/dp2library/VerifyBarcodeResponse")]
         System.IAsyncResult BeginVerifyBarcode(string strAction, string strLibraryCode, string strBarcode, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndVerifyBarcode(out string strOutputBarcode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSystemParameter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSystemParameterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetSystemParameter", ReplyAction="http://dp2003.com/dp2library/dp2library/GetSystemParameterResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetSystemParameter(out string strValue, string strCategory, string strName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSystemParameter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSystemParameterResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetSystemParameter", ReplyAction="http://dp2003.com/dp2library/dp2library/GetSystemParameterResponse")]
         System.IAsyncResult BeginGetSystemParameter(string strCategory, string strName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetSystemParameter(out string strValue, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetSystemParameter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetSystemParameterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetSystemParameter", ReplyAction="http://dp2003.com/dp2library/dp2library/SetSystemParameterResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetSystemParameter(string strCategory, string strName, string strValue);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetSystemParameter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetSystemParameterResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetSystemParameter", ReplyAction="http://dp2003.com/dp2library/dp2library/SetSystemParameterResponse")]
         System.IAsyncResult BeginSetSystemParameter(string strCategory, string strName, string strValue, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetSystemParameter(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/UrgentRecover", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/UrgentRecoverResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/UrgentRecover", ReplyAction="http://dp2003.com/dp2library/dp2library/UrgentRecoverResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult UrgentRecover(string strXML);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/UrgentRecover", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/UrgentRecoverResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/UrgentRecover", ReplyAction="http://dp2003.com/dp2library/dp2library/UrgentRecoverResponse")]
         System.IAsyncResult BeginUrgentRecover(string strXML, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndUrgentRecover(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/RepairBorrowInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/RepairBorrowInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/RepairBorrowInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/RepairBorrowInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult RepairBorrowInfo(out int nProcessedBorrowItems, out int nTotalBorrowItems, out string strOutputReaderBarcode, out string[] aDupPath, string strAction, string strReaderBarcode, string strItemBarcode, string strConfirmItemRecPath, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/RepairBorrowInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/RepairBorrowInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/RepairBorrowInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/RepairBorrowInfoResponse")]
         System.IAsyncResult BeginRepairBorrowInfo(string strAction, string strReaderBarcode, string strItemBarcode, string strConfirmItemRecPath, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndRepairBorrowInfo(out int nProcessedBorrowItems, out int nTotalBorrowItems, out string strOutputReaderBarcode, out string[] aDupPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/PassGate", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/PassGateResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/PassGate", ReplyAction="http://dp2003.com/dp2library/dp2library/PassGateResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult PassGate(out string[] results, string strReaderBarcode, string strGateName, string strResultTypeList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/PassGate", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/PassGateResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/PassGate", ReplyAction="http://dp2003.com/dp2library/dp2library/PassGateResponse")]
         System.IAsyncResult BeginPassGate(string strReaderBarcode, string strGateName, string strResultTypeList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndPassGate(out string[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Foregift", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ForegiftResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Foregift", ReplyAction="http://dp2003.com/dp2library/dp2library/ForegiftResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Foregift(out string strOutputReaderXml, out string strOutputID, string strAction, string strReaderBarcode);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Foregift", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ForegiftResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Foregift", ReplyAction="http://dp2003.com/dp2library/dp2library/ForegiftResponse")]
         System.IAsyncResult BeginForegift(string strAction, string strReaderBarcode, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndForegift(out string strOutputReaderXml, out string strOutputID, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Hire", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/HireResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Hire", ReplyAction="http://dp2003.com/dp2library/dp2library/HireResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Hire(out string strOutputReaderXml, out string strOutputID, string strAction, string strReaderBarcode);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Hire", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/HireResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Hire", ReplyAction="http://dp2003.com/dp2library/dp2library/HireResponse")]
         System.IAsyncResult BeginHire(string strAction, string strReaderBarcode, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndHire(out string strOutputReaderXml, out string strOutputID, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Settlement", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SettlementResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Settlement", ReplyAction="http://dp2003.com/dp2library/dp2library/SettlementResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Settlement(string strAction, string[] ids);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Settlement", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SettlementResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Settlement", ReplyAction="http://dp2003.com/dp2library/dp2library/SettlementResponse")]
         System.IAsyncResult BeginSettlement(string strAction, string[] ids, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSettlement(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneClassCallNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneClassCallNumberResponse" +
-            "")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchOneClassCallNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOneClassCallNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchOneClassCallNumber(out string strQueryXml, string strArrangeGroupName, string strClass, string strResultSetName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneClassCallNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneClassCallNumberResponse" +
-            "")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchOneClassCallNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOneClassCallNumberResponse")]
         System.IAsyncResult BeginSearchOneClassCallNumber(string strArrangeGroupName, string strClass, string strResultSetName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchOneClassCallNumber(out string strQueryXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCallNumberSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCallNumberSearchResultRespons" +
-            "e")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetCallNumberSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCallNumberSearchResultResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetCallNumberSearchResult(out DigitalPlatform.LibraryClient.localhost.CallNumberSearchResult[] searchresults, string strArrangeGroupName, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCallNumberSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCallNumberSearchResultRespons" +
-            "e")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetCallNumberSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCallNumberSearchResultResponse")]
         System.IAsyncResult BeginGetCallNumberSearchResult(string strArrangeGroupName, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetCallNumberSearchResult(out DigitalPlatform.LibraryClient.localhost.CallNumberSearchResult[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOneClassTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOneClassTailNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOneClassTailNumber(out string strTailNumber, string strArrangeGroupName, string strClass);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOneClassTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOneClassTailNumberResponse")]
         System.IAsyncResult BeginGetOneClassTailNumber(string strArrangeGroupName, string strClass, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOneClassTailNumber(out string strTailNumber, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOneClassTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SetOneClassTailNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetOneClassTailNumber(out string strOutputNumber, string strAction, string strArrangeGroupName, string strClass, string strTestNumber);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOneClassTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SetOneClassTailNumberResponse")]
         System.IAsyncResult BeginSetOneClassTailNumber(string strAction, string strArrangeGroupName, string strClass, string strTestNumber, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetOneClassTailNumber(out string strOutputNumber, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchUsedZhongcihao", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchUsedZhongcihaoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchUsedZhongcihao", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchUsedZhongcihaoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchUsedZhongcihao(out string strQueryXml, string strZhongcihaoGroupName, string strClass, string strResultSetName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchUsedZhongcihao", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchUsedZhongcihaoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchUsedZhongcihao", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchUsedZhongcihaoResponse")]
         System.IAsyncResult BeginSearchUsedZhongcihao(string strZhongcihaoGroupName, string strClass, string strResultSetName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchUsedZhongcihao(out string strQueryXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoSearchResultRespons" +
-            "e")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetZhongcihaoSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetZhongcihaoSearchResultResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetZhongcihaoSearchResult(out DigitalPlatform.LibraryClient.localhost.ZhongcihaoSearchResult[] searchresults, string strZhongcihaoGroupName, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoSearchResultRespons" +
-            "e")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetZhongcihaoSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetZhongcihaoSearchResultResponse")]
         System.IAsyncResult BeginGetZhongcihaoSearchResult(string strZhongcihaoGroupName, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetZhongcihaoSearchResult(out DigitalPlatform.LibraryClient.localhost.ZhongcihaoSearchResult[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetZhongcihaoTailNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetZhongcihaoTailNumber(out string strTailNumber, string strZhongcihaoGroupName, string strClass);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetZhongcihaoTailNumberResponse")]
         System.IAsyncResult BeginGetZhongcihaoTailNumber(string strZhongcihaoGroupName, string strClass, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetZhongcihaoTailNumber(out string strTailNumber, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetZhongcihaoTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SetZhongcihaoTailNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetZhongcihaoTailNumber(out string strOutputNumber, string strAction, string strZhongcihaoGroupName, string strClass, string strTestNumber);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetZhongcihaoTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SetZhongcihaoTailNumberResponse")]
         System.IAsyncResult BeginSetZhongcihaoTailNumber(string strAction, string strZhongcihaoGroupName, string strClass, string strTestNumber, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetZhongcihaoTailNumber(out string strOutputNumber, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchDup(out string strUsedProjectName, string strOriginBiblioRecPath, string strOriginBiblioRecXml, string strProjectName, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchDupResponse")]
         System.IAsyncResult BeginSearchDup(string strOriginBiblioRecPath, string strOriginBiblioRecXml, string strProjectName, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchDup(out string strUsedProjectName, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetDupSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetDupSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetDupSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetDupSearchResultResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetDupSearchResult(out DigitalPlatform.LibraryClient.localhost.DupSearchResult[] searchresults, long lStart, long lCount, string strBrowseInfoStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetDupSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetDupSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetDupSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetDupSearchResultResponse")]
         System.IAsyncResult BeginGetDupSearchResult(long lStart, long lCount, string strBrowseInfoStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetDupSearchResult(out DigitalPlatform.LibraryClient.localhost.DupSearchResult[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListDupProjectInfos", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListDupProjectInfosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ListDupProjectInfos", ReplyAction="http://dp2003.com/dp2library/dp2library/ListDupProjectInfosResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListDupProjectInfos(out DigitalPlatform.LibraryClient.localhost.DupProjectInfo[] results, string strOriginBiblioDbName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListDupProjectInfos", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListDupProjectInfosResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ListDupProjectInfos", ReplyAction="http://dp2003.com/dp2library/dp2library/ListDupProjectInfosResponse")]
         System.IAsyncResult BeginListDupProjectInfos(string strOriginBiblioDbName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndListDupProjectInfos(out DigitalPlatform.LibraryClient.localhost.DupProjectInfo[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUtilInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUtilInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetUtilInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetUtilInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetUtilInfo(out string strValue, string strAction, string strDbName, string strFrom, string strKey, string strValueAttrName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUtilInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUtilInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetUtilInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetUtilInfoResponse")]
         System.IAsyncResult BeginGetUtilInfo(string strAction, string strDbName, string strFrom, string strKey, string strValueAttrName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetUtilInfo(out string strValue, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUtilInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUtilInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetUtilInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetUtilInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetUtilInfo(string strAction, string strDbName, string strFrom, string strRootElementName, string strKeyAttrName, string strValueAttrName, string strKey, string strValue);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUtilInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUtilInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetUtilInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetUtilInfoResponse")]
         System.IAsyncResult BeginSetUtilInfo(string strAction, string strDbName, string strFrom, string strRootElementName, string strKeyAttrName, string strValueAttrName, string strKey, string strValue, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetUtilInfo(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRes", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetResResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetRes", ReplyAction="http://dp2003.com/dp2library/dp2library/GetResResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetRes(out byte[] baContent, out string strMetadata, out string strOutputResPath, out byte[] baOutputTimestamp, string strResPath, long nStart, int nLength, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRes", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetResResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetRes", ReplyAction="http://dp2003.com/dp2library/dp2library/GetResResponse")]
         System.IAsyncResult BeginGetRes(string strResPath, long nStart, int nLength, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetRes(out byte[] baContent, out string strMetadata, out string strOutputResPath, out byte[] baOutputTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/WriteRes", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/WriteResResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/WriteRes", ReplyAction="http://dp2003.com/dp2library/dp2library/WriteResResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult WriteRes(out string strOutputResPath, out byte[] baOutputTimestamp, string strResPath, string strRanges, long lTotalLength, byte[] baContent, string strMetadata, string strStyle, byte[] baInputTimestamp);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/WriteRes", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/WriteResResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/WriteRes", ReplyAction="http://dp2003.com/dp2library/dp2library/WriteResResponse")]
         System.IAsyncResult BeginWriteRes(string strResPath, string strRanges, long lTotalLength, byte[] baContent, string strMetadata, string strStyle, byte[] baInputTimestamp, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndWriteRes(out string strOutputResPath, out byte[] baOutputTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetComments", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetComments", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCommentsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetComments(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] commentinfos, string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetComments", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetComments", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCommentsResponse")]
         System.IAsyncResult BeginGetComments(string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetComments(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] commentinfos, System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface dp2libraryRESTChannel : DigitalPlatform.LibraryClient.localhost.dp2libraryREST, System.ServiceModel.IClientChannel {
+    public interface dp2libraryChannel : DigitalPlatform.LibraryClient.localhost.dp2library, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4809,6 +5086,32 @@ namespace DigitalPlatform.LibraryClient.localhost {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((DigitalPlatform.LibraryClient.localhost.LibraryServerResult)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class OnlineStatisCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results1;
+        
+        public OnlineStatisCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results1 = results;
+        }
+        
+        public string[] results {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string[])(this.results1[0]));
+            }
+        }
+        
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((DigitalPlatform.LibraryClient.localhost.LibraryServerResult)(this.results1[1]));
             }
         }
     }
@@ -7202,7 +7505,7 @@ namespace DigitalPlatform.LibraryClient.localhost {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class dp2libraryRESTClient : System.ServiceModel.ClientBase<DigitalPlatform.LibraryClient.localhost.dp2libraryREST>, DigitalPlatform.LibraryClient.localhost.dp2libraryREST {
+    public partial class dp2libraryClient : System.ServiceModel.ClientBase<DigitalPlatform.LibraryClient.localhost.dp2library>, DigitalPlatform.LibraryClient.localhost.dp2library {
         
         private BeginOperationDelegate onBeginSetCommentsDelegate;
         
@@ -7311,6 +7614,12 @@ namespace DigitalPlatform.LibraryClient.localhost {
         private EndOperationDelegate onEndSetPinyinDelegate;
         
         private System.Threading.SendOrPostCallback onSetPinyinCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginOnlineStatisDelegate;
+        
+        private EndOperationDelegate onEndOnlineStatisDelegate;
+        
+        private System.Threading.SendOrPostCallback onOnlineStatisCompletedDelegate;
         
         private BeginOperationDelegate onBeginGetVersionDelegate;
         
@@ -7822,22 +8131,22 @@ namespace DigitalPlatform.LibraryClient.localhost {
         
         private System.Threading.SendOrPostCallback onGetCommentsCompletedDelegate;
         
-        public dp2libraryRESTClient() {
+        public dp2libraryClient() {
         }
         
-        public dp2libraryRESTClient(string endpointConfigurationName) : 
+        public dp2libraryClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public dp2libraryRESTClient(string endpointConfigurationName, string remoteAddress) : 
+        public dp2libraryClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public dp2libraryRESTClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public dp2libraryClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public dp2libraryRESTClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public dp2libraryClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -7876,6 +8185,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
         public event System.EventHandler<GetPinyinCompletedEventArgs> GetPinyinCompleted;
         
         public event System.EventHandler<SetPinyinCompletedEventArgs> SetPinyinCompleted;
+        
+        public event System.EventHandler<OnlineStatisCompletedEventArgs> OnlineStatisCompleted;
         
         public event System.EventHandler<GetVersionCompletedEventArgs> GetVersionCompleted;
         
@@ -8571,13 +8882,13 @@ namespace DigitalPlatform.LibraryClient.localhost {
                         strDateRangeString}, this.onEndExistStatisInfoDelegate, this.onExistStatisInfoCompletedDelegate, userState);
         }
         
-        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetFile(out byte[] baContent, out string strFileTime, string strCategory, string strFileName, long lStart, long lLength) {
-            return base.Channel.GetFile(out baContent, out strFileTime, strCategory, strFileName, lStart, lLength);
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetFile(out byte[] baContent, out string strFileTime, string strCategory, string strFileName, long lStart, long lLength, string strStyle) {
+            return base.Channel.GetFile(out baContent, out strFileTime, strCategory, strFileName, lStart, lLength, strStyle);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetFile(string strCategory, string strFileName, long lStart, long lLength, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetFile(strCategory, strFileName, lStart, lLength, callback, asyncState);
+        public System.IAsyncResult BeginGetFile(string strCategory, string strFileName, long lStart, long lLength, string strStyle, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetFile(strCategory, strFileName, lStart, lLength, strStyle, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -8590,7 +8901,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
             string strFileName = ((string)(inValues[1]));
             long lStart = ((long)(inValues[2]));
             long lLength = ((long)(inValues[3]));
-            return this.BeginGetFile(strCategory, strFileName, lStart, lLength, callback, asyncState);
+            string strStyle = ((string)(inValues[4]));
+            return this.BeginGetFile(strCategory, strFileName, lStart, lLength, strStyle, callback, asyncState);
         }
         
         private object[] OnEndGetFile(System.IAsyncResult result) {
@@ -8610,11 +8922,11 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
         }
         
-        public void GetFileAsync(string strCategory, string strFileName, long lStart, long lLength) {
-            this.GetFileAsync(strCategory, strFileName, lStart, lLength, null);
+        public void GetFileAsync(string strCategory, string strFileName, long lStart, long lLength, string strStyle) {
+            this.GetFileAsync(strCategory, strFileName, lStart, lLength, strStyle, null);
         }
         
-        public void GetFileAsync(string strCategory, string strFileName, long lStart, long lLength, object userState) {
+        public void GetFileAsync(string strCategory, string strFileName, long lStart, long lLength, string strStyle, object userState) {
             if ((this.onBeginGetFileDelegate == null)) {
                 this.onBeginGetFileDelegate = new BeginOperationDelegate(this.OnBeginGetFile);
             }
@@ -8628,7 +8940,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
                         strCategory,
                         strFileName,
                         lStart,
-                        lLength}, this.onEndGetFileDelegate, this.onGetFileCompletedDelegate, userState);
+                        lLength,
+                        strStyle}, this.onEndGetFileDelegate, this.onGetFileCompletedDelegate, userState);
         }
         
         public DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListFile(out DigitalPlatform.LibraryClient.localhost.FileItemInfo[] infos, string strAction, string strCategory, string strFileName, long lStart, long lLength) {
@@ -8997,13 +9310,13 @@ namespace DigitalPlatform.LibraryClient.localhost {
                         questions}, this.onEndGetAuthorNumberDelegate, this.onGetAuthorNumberCompletedDelegate, userState);
         }
         
-        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetPinyin(out string strPinyinXml, string strText) {
-            return base.Channel.GetPinyin(out strPinyinXml, strText);
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetPinyin(out string strPinyinXml, string strType, string strText) {
+            return base.Channel.GetPinyin(out strPinyinXml, strType, strText);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetPinyin(string strText, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetPinyin(strText, callback, asyncState);
+        public System.IAsyncResult BeginGetPinyin(string strType, string strText, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetPinyin(strType, strText, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -9012,8 +9325,9 @@ namespace DigitalPlatform.LibraryClient.localhost {
         }
         
         private System.IAsyncResult OnBeginGetPinyin(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string strText = ((string)(inValues[0]));
-            return this.BeginGetPinyin(strText, callback, asyncState);
+            string strType = ((string)(inValues[0]));
+            string strText = ((string)(inValues[1]));
+            return this.BeginGetPinyin(strType, strText, callback, asyncState);
         }
         
         private object[] OnEndGetPinyin(System.IAsyncResult result) {
@@ -9031,11 +9345,11 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
         }
         
-        public void GetPinyinAsync(string strText) {
-            this.GetPinyinAsync(strText, null);
+        public void GetPinyinAsync(string strType, string strText) {
+            this.GetPinyinAsync(strType, strText, null);
         }
         
-        public void GetPinyinAsync(string strText, object userState) {
+        public void GetPinyinAsync(string strType, string strText, object userState) {
             if ((this.onBeginGetPinyinDelegate == null)) {
                 this.onBeginGetPinyinDelegate = new BeginOperationDelegate(this.OnBeginGetPinyin);
             }
@@ -9046,6 +9360,7 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 this.onGetPinyinCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPinyinCompleted);
             }
             base.InvokeAsync(this.onBeginGetPinyinDelegate, new object[] {
+                        strType,
                         strText}, this.onEndGetPinyinDelegate, this.onGetPinyinCompletedDelegate, userState);
         }
         
@@ -9097,6 +9412,64 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
             base.InvokeAsync(this.onBeginSetPinyinDelegate, new object[] {
                         strPinyinXml}, this.onEndSetPinyinDelegate, this.onSetPinyinCompletedDelegate, userState);
+        }
+        
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult OnlineStatis(out string[] results, string action, string category, string uid, string style) {
+            return base.Channel.OnlineStatis(out results, action, category, uid, style);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginOnlineStatis(string action, string category, string uid, string style, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginOnlineStatis(action, category, uid, style, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndOnlineStatis(out string[] results, System.IAsyncResult result) {
+            return base.Channel.EndOnlineStatis(out results, result);
+        }
+        
+        private System.IAsyncResult OnBeginOnlineStatis(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string action = ((string)(inValues[0]));
+            string category = ((string)(inValues[1]));
+            string uid = ((string)(inValues[2]));
+            string style = ((string)(inValues[3]));
+            return this.BeginOnlineStatis(action, category, uid, style, callback, asyncState);
+        }
+        
+        private object[] OnEndOnlineStatis(System.IAsyncResult result) {
+            string[] results = this.GetDefaultValueForInitialization<string[]>();
+            DigitalPlatform.LibraryClient.localhost.LibraryServerResult retVal = this.EndOnlineStatis(out results, result);
+            return new object[] {
+                    results,
+                    retVal};
+        }
+        
+        private void OnOnlineStatisCompleted(object state) {
+            if ((this.OnlineStatisCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.OnlineStatisCompleted(this, new OnlineStatisCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void OnlineStatisAsync(string action, string category, string uid, string style) {
+            this.OnlineStatisAsync(action, category, uid, style, null);
+        }
+        
+        public void OnlineStatisAsync(string action, string category, string uid, string style, object userState) {
+            if ((this.onBeginOnlineStatisDelegate == null)) {
+                this.onBeginOnlineStatisDelegate = new BeginOperationDelegate(this.OnBeginOnlineStatis);
+            }
+            if ((this.onEndOnlineStatisDelegate == null)) {
+                this.onEndOnlineStatisDelegate = new EndOperationDelegate(this.OnEndOnlineStatis);
+            }
+            if ((this.onOnlineStatisCompletedDelegate == null)) {
+                this.onOnlineStatisCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnOnlineStatisCompleted);
+            }
+            base.InvokeAsync(this.onBeginOnlineStatisDelegate, new object[] {
+                        action,
+                        category,
+                        uid,
+                        style}, this.onEndOnlineStatisDelegate, this.onOnlineStatisCompletedDelegate, userState);
         }
         
         public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetVersion(out string uid) {
@@ -12280,13 +12653,13 @@ namespace DigitalPlatform.LibraryClient.localhost {
             base.InvokeAsync(this.onBeginClearAllDbsDelegate, null, this.onEndClearAllDbsDelegate, this.onClearAllDbsCompletedDelegate, userState);
         }
         
-        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageDatabase(out string strOutputInfo, string strAction, string strDatabaseName, string strDatabaseInfo) {
-            return base.Channel.ManageDatabase(out strOutputInfo, strAction, strDatabaseName, strDatabaseInfo);
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageDatabase(out string strOutputInfo, string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle) {
+            return base.Channel.ManageDatabase(out strOutputInfo, strAction, strDatabaseName, strDatabaseInfo, strStyle);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginManageDatabase(string strAction, string strDatabaseName, string strDatabaseInfo, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginManageDatabase(strAction, strDatabaseName, strDatabaseInfo, callback, asyncState);
+        public System.IAsyncResult BeginManageDatabase(string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginManageDatabase(strAction, strDatabaseName, strDatabaseInfo, strStyle, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -12298,7 +12671,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
             string strAction = ((string)(inValues[0]));
             string strDatabaseName = ((string)(inValues[1]));
             string strDatabaseInfo = ((string)(inValues[2]));
-            return this.BeginManageDatabase(strAction, strDatabaseName, strDatabaseInfo, callback, asyncState);
+            string strStyle = ((string)(inValues[3]));
+            return this.BeginManageDatabase(strAction, strDatabaseName, strDatabaseInfo, strStyle, callback, asyncState);
         }
         
         private object[] OnEndManageDatabase(System.IAsyncResult result) {
@@ -12316,11 +12690,11 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
         }
         
-        public void ManageDatabaseAsync(string strAction, string strDatabaseName, string strDatabaseInfo) {
-            this.ManageDatabaseAsync(strAction, strDatabaseName, strDatabaseInfo, null);
+        public void ManageDatabaseAsync(string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle) {
+            this.ManageDatabaseAsync(strAction, strDatabaseName, strDatabaseInfo, strStyle, null);
         }
         
-        public void ManageDatabaseAsync(string strAction, string strDatabaseName, string strDatabaseInfo, object userState) {
+        public void ManageDatabaseAsync(string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle, object userState) {
             if ((this.onBeginManageDatabaseDelegate == null)) {
                 this.onBeginManageDatabaseDelegate = new BeginOperationDelegate(this.OnBeginManageDatabase);
             }
@@ -12333,7 +12707,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
             base.InvokeAsync(this.onBeginManageDatabaseDelegate, new object[] {
                         strAction,
                         strDatabaseName,
-                        strDatabaseInfo}, this.onEndManageDatabaseDelegate, this.onManageDatabaseCompletedDelegate, userState);
+                        strDatabaseInfo,
+                        strStyle}, this.onEndManageDatabaseDelegate, this.onManageDatabaseCompletedDelegate, userState);
         }
         
         public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetUser(out DigitalPlatform.LibraryClient.localhost.UserInfo[] contents, string strAction, string strName, int nStart, int nCount) {
@@ -14058,378 +14433,386 @@ namespace DigitalPlatform.LibraryClient.localhost {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://dp2003.com/dp2library/", ConfigurationName="localhost.dp2library", SessionMode=System.ServiceModel.SessionMode.Required)]
-    public interface dp2library {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://dp2003.com/dp2library/rest", ConfigurationName="localhost.dp2libraryREST", SessionMode=System.ServiceModel.SessionMode.NotAllowed)]
+    public interface dp2libraryREST {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetComments", ReplyAction="http://dp2003.com/dp2library/dp2library/SetCommentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetComments", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCommentsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetComments(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] commentinfos);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetComments", ReplyAction="http://dp2003.com/dp2library/dp2library/SetCommentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetComments", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCommentsResponse")]
         System.IAsyncResult BeginSetComments(string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] commentinfos, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetComments(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetCommentInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCommentInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetCommentInfo(out string strResult, out string strCommentRecPath, out byte[] comment_timestamp, out string strBiblio, out string strOutputBiblioRecPath, string strRefID, string strItemXml, string strResultType, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetCommentInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCommentInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentInfoResponse")]
         System.IAsyncResult BeginGetCommentInfo(string strRefID, string strItemXml, string strResultType, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetCommentInfo(out string strResult, out string strCommentRecPath, out byte[] comment_timestamp, out string strBiblio, out string strOutputBiblioRecPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchCommentDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchCommentDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchCommentDup(out string[] paths, string strIndex, string strBiblioRecPath, int nMax);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchCommentDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchCommentDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentDupResponse")]
         System.IAsyncResult BeginSearchCommentDup(string strIndex, string strBiblioRecPath, int nMax, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchCommentDup(out string[] paths, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchComment", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchCommentResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchComment", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchComment(string strCommentDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchComment", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchCommentResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchComment", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCommentResponse")]
         System.IAsyncResult BeginSearchComment(string strCommentDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchComment(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/GetMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetMessageResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetMessage(out DigitalPlatform.LibraryClient.localhost.MessageData[] messages, string[] message_ids, DigitalPlatform.LibraryClient.localhost.MessageLevel messagelevel);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/GetMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetMessageResponse")]
         System.IAsyncResult BeginGetMessage(string[] message_ids, DigitalPlatform.LibraryClient.localhost.MessageLevel messagelevel, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetMessage(out DigitalPlatform.LibraryClient.localhost.MessageData[] messages, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ListMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/ListMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListMessageResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListMessage(out int nTotalCount, out DigitalPlatform.LibraryClient.localhost.MessageData[] messages, string strStyle, string strResultsetName, string strBoxType, DigitalPlatform.LibraryClient.localhost.MessageLevel messagelevel, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ListMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/ListMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListMessageResponse")]
         System.IAsyncResult BeginListMessage(string strStyle, string strResultsetName, string strBoxType, DigitalPlatform.LibraryClient.localhost.MessageLevel messagelevel, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndListMessage(out int nTotalCount, out DigitalPlatform.LibraryClient.localhost.MessageData[] messages, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/SetMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetMessageResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetMessage(out DigitalPlatform.LibraryClient.localhost.MessageData[] output_messages, string strAction, string strStyle, DigitalPlatform.LibraryClient.localhost.MessageData[] messages);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetMessage", ReplyAction="http://dp2003.com/dp2library/dp2library/SetMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetMessage", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetMessageResponse")]
         System.IAsyncResult BeginSetMessage(string strAction, string strStyle, DigitalPlatform.LibraryClient.localhost.MessageData[] messages, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetMessage(out DigitalPlatform.LibraryClient.localhost.MessageData[] output_messages, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetStatisInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetStatisInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetStatisInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetStatisInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetStatisInfo(out DigitalPlatform.LibraryClient.localhost.RangeStatisInfo info, out string strXml, string strDateRangeString, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetStatisInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetStatisInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetStatisInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetStatisInfoResponse")]
         System.IAsyncResult BeginGetStatisInfo(string strDateRangeString, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetStatisInfo(out DigitalPlatform.LibraryClient.localhost.RangeStatisInfo info, out string strXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ExistStatisInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/ExistStatisInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ExistStatisInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ExistStatisInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ExistStatisInfo(out DigitalPlatform.LibraryClient.localhost.DateExist[] dates, string strDateRangeString);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ExistStatisInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/ExistStatisInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ExistStatisInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ExistStatisInfoResponse")]
         System.IAsyncResult BeginExistStatisInfo(string strDateRangeString, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndExistStatisInfo(out DigitalPlatform.LibraryClient.localhost.DateExist[] dates, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetFile", ReplyAction="http://dp2003.com/dp2library/dp2library/GetFileResponse")]
-        DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetFile(out byte[] baContent, out string strFileTime, string strCategory, string strFileName, long lStart, long lLength);
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetFile", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetFileResponse")]
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetFile(out byte[] baContent, out string strFileTime, string strCategory, string strFileName, long lStart, long lLength, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetFile", ReplyAction="http://dp2003.com/dp2library/dp2library/GetFileResponse")]
-        System.IAsyncResult BeginGetFile(string strCategory, string strFileName, long lStart, long lLength, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetFile", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetFileResponse")]
+        System.IAsyncResult BeginGetFile(string strCategory, string strFileName, long lStart, long lLength, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetFile(out byte[] baContent, out string strFileTime, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ListFile", ReplyAction="http://dp2003.com/dp2library/dp2library/ListFileResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListFile", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListFileResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListFile(out DigitalPlatform.LibraryClient.localhost.FileItemInfo[] infos, string strAction, string strCategory, string strFileName, long lStart, long lLength);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ListFile", ReplyAction="http://dp2003.com/dp2library/dp2library/ListFileResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListFile", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListFileResponse")]
         System.IAsyncResult BeginListFile(string strAction, string strCategory, string strFileName, long lStart, long lLength, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndListFile(out DigitalPlatform.LibraryClient.localhost.FileItemInfo[] infos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/HitCounter", ReplyAction="http://dp2003.com/dp2library/dp2library/HitCounterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/HitCounter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/HitCounterResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult HitCounter(out long Value, string strAction, string strName, string strClientAddress);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/HitCounter", ReplyAction="http://dp2003.com/dp2library/dp2library/HitCounterResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/HitCounter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/HitCounterResponse")]
         System.IAsyncResult BeginHitCounter(string strAction, string strName, string strClientAddress, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndHitCounter(out long Value, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchCharging", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchChargingResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCharging", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchChargingResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchCharging(out DigitalPlatform.LibraryClient.localhost.ChargingItemWrapper[] results, string patronBarcode, string timeRange, string actions, string order, long start, long count);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchCharging", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchChargingResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchCharging", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchChargingResponse")]
         System.IAsyncResult BeginSearchCharging(string patronBarcode, string timeRange, string actions, string order, long start, long count, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchCharging(out DigitalPlatform.LibraryClient.localhost.ChargingItemWrapper[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/BindPatron", ReplyAction="http://dp2003.com/dp2library/dp2library/BindPatronResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/BindPatron", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BindPatronResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult BindPatron(out string[] results, string strAction, string strQueryWord, string strPassword, string strBindingID, string strStyle, string strResultTypeList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/BindPatron", ReplyAction="http://dp2003.com/dp2library/dp2library/BindPatronResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/BindPatron", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BindPatronResponse")]
         System.IAsyncResult BeginBindPatron(string strAction, string strQueryWord, string strPassword, string strBindingID, string strStyle, string strResultTypeList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndBindPatron(out string[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Dir", ReplyAction="http://dp2003.com/dp2library/dp2library/DirResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Dir", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/DirResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Dir(out DigitalPlatform.LibraryClient.localhost.ResInfoItem[] items, out DigitalPlatform.LibraryClient.localhost.ErrorCodeValue kernel_errorcode, string strResPath, long lStart, long lLength, string strLang, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Dir", ReplyAction="http://dp2003.com/dp2library/dp2library/DirResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Dir", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/DirResponse")]
         System.IAsyncResult BeginDir(string strResPath, long lStart, long lLength, string strLang, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndDir(out DigitalPlatform.LibraryClient.localhost.ResInfoItem[] items, out DigitalPlatform.LibraryClient.localhost.ErrorCodeValue kernel_errorcode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetAuthorNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetAuthorNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetAuthorNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetAuthorNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetAuthorNumber(string strAuthor, bool bSelectPinyin, bool bSelectEntry, bool bOutputDebugInfo, ref DigitalPlatform.LibraryClient.localhost.Question[] questions, out string strNumber, out string strDebugInfo);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetAuthorNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetAuthorNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetAuthorNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetAuthorNumberResponse")]
         System.IAsyncResult BeginGetAuthorNumber(string strAuthor, bool bSelectPinyin, bool bSelectEntry, bool bOutputDebugInfo, ref DigitalPlatform.LibraryClient.localhost.Question[] questions, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetAuthorNumber(ref DigitalPlatform.LibraryClient.localhost.Question[] questions, out string strNumber, out string strDebugInfo, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetPinyin", ReplyAction="http://dp2003.com/dp2library/dp2library/GetPinyinResponse")]
-        DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetPinyin(out string strPinyinXml, string strText);
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetPinyin", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetPinyinResponse")]
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetPinyin(out string strPinyinXml, string strType, string strText);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetPinyin", ReplyAction="http://dp2003.com/dp2library/dp2library/GetPinyinResponse")]
-        System.IAsyncResult BeginGetPinyin(string strText, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetPinyin", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetPinyinResponse")]
+        System.IAsyncResult BeginGetPinyin(string strType, string strText, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetPinyin(out string strPinyinXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetPinyin", ReplyAction="http://dp2003.com/dp2library/dp2library/SetPinyinResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetPinyin", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetPinyinResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetPinyin(string strPinyinXml);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetPinyin", ReplyAction="http://dp2003.com/dp2library/dp2library/SetPinyinResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetPinyin", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetPinyinResponse")]
         System.IAsyncResult BeginSetPinyin(string strPinyinXml, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetPinyin(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetVersion", ReplyAction="http://dp2003.com/dp2library/dp2library/GetVersionResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/OnlineStatis", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/OnlineStatisResponse")]
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult OnlineStatis(out string[] results, string action, string category, string uid, string style);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/OnlineStatis", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/OnlineStatisResponse")]
+        System.IAsyncResult BeginOnlineStatis(string action, string category, string uid, string style, System.AsyncCallback callback, object asyncState);
+        
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndOnlineStatis(out string[] results, System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetVersion", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetVersionResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetVersion(out string uid);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetVersion", ReplyAction="http://dp2003.com/dp2library/dp2library/GetVersionResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetVersion", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetVersionResponse")]
         System.IAsyncResult BeginGetVersion(System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetVersion(out string uid, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Login", ReplyAction="http://dp2003.com/dp2library/dp2library/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Login", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/LoginResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Login(out string strOutputUserName, out string strRights, out string strLibraryCode, string strUserName, string strPassword, string strParameters);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Login", ReplyAction="http://dp2003.com/dp2library/dp2library/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Login", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/LoginResponse")]
         System.IAsyncResult BeginLogin(string strUserName, string strPassword, string strParameters, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndLogin(out string strOutputUserName, out string strRights, out string strLibraryCode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Logout", ReplyAction="http://dp2003.com/dp2library/dp2library/LogoutResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Logout", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/LogoutResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Logout();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Logout", ReplyAction="http://dp2003.com/dp2library/dp2library/LogoutResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Logout", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/LogoutResponse")]
         System.IAsyncResult BeginLogout(System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndLogout(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetLang", ReplyAction="http://dp2003.com/dp2library/dp2library/SetLangResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetLang", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetLangResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetLang(out string strOldLang, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetLang", ReplyAction="http://dp2003.com/dp2library/dp2library/SetLangResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetLang", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetLangResponse")]
         System.IAsyncResult BeginSetLang(string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetLang(out string strOldLang, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, IsInitiating=false, Action="http://dp2003.com/dp2library/dp2library/Stop")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Stop")]
         void Stop();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, IsInitiating=false, AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Stop")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Stop")]
         System.IAsyncResult BeginStop(System.AsyncCallback callback, object asyncState);
         
         void EndStop(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/VerifyReaderPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/VerifyReaderPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyReaderPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyReaderPasswordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult VerifyReaderPassword(string strReaderBarcode, string strReaderPassword);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/VerifyReaderPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/VerifyReaderPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyReaderPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyReaderPasswordResponse")]
         System.IAsyncResult BeginVerifyReaderPassword(string strReaderBarcode, string strReaderPassword, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndVerifyReaderPassword(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ChangeReaderPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ChangeReaderPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeReaderPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeReaderPasswordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ChangeReaderPassword(string strReaderBarcode, string strReaderOldPassword, string strReaderNewPassword);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ChangeReaderPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ChangeReaderPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeReaderPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeReaderPasswordResponse")]
         System.IAsyncResult BeginChangeReaderPassword(string strReaderBarcode, string strReaderOldPassword, string strReaderNewPassword, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndChangeReaderPassword(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetReaderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetReaderInfo(out string[] results, out string strRecPath, out byte[] baTimestamp, string strBarcode, string strResultTypeList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetReaderInfoResponse")]
         System.IAsyncResult BeginGetReaderInfo(string strBarcode, string strResultTypeList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetReaderInfo(out string[] results, out string strRecPath, out byte[] baTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetReaderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetReaderInfo(out string strExistingXml, out string strSavedXml, out string strSavedRecPath, out byte[] baNewTimestamp, out DigitalPlatform.LibraryClient.localhost.ErrorCodeValue kernel_errorcode, string strAction, string strRecPath, string strNewXml, string strOldXml, byte[] baOldTimestamp);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetReaderInfoResponse")]
         System.IAsyncResult BeginSetReaderInfo(string strAction, string strRecPath, string strNewXml, string strOldXml, byte[] baOldTimestamp, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetReaderInfo(out string strExistingXml, out string strSavedXml, out string strSavedRecPath, out byte[] baNewTimestamp, out DigitalPlatform.LibraryClient.localhost.ErrorCodeValue kernel_errorcode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/MoveReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/MoveReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/MoveReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/MoveReaderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult MoveReaderInfo(string strSourceRecPath, ref string strTargetRecPath, out byte[] target_timestamp);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/MoveReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/MoveReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/MoveReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/MoveReaderInfoResponse")]
         System.IAsyncResult BeginMoveReaderInfo(string strSourceRecPath, ref string strTargetRecPath, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndMoveReaderInfo(ref string strTargetRecPath, out byte[] target_timestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/DevolveReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/DevolveReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/DevolveReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/DevolveReaderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult DevolveReaderInfo(string strSourceReaderBarcode, string strTargetReaderBarcode);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/DevolveReaderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/DevolveReaderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/DevolveReaderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/DevolveReaderInfoResponse")]
         System.IAsyncResult BeginDevolveReaderInfo(string strSourceReaderBarcode, string strTargetReaderBarcode, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndDevolveReaderInfo(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchReader", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchReaderResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchReader", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchReaderResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchReader(string strReaderDbNames, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchReader", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchReaderResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchReader", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchReaderResponse")]
         System.IAsyncResult BeginSearchReader(string strReaderDbNames, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchReader(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetFriends", ReplyAction="http://dp2003.com/dp2library/dp2library/SetFriendsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetFriends", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetFriendsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetFriends(string strAction, string strReaderBarcode, string strComment, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetFriends", ReplyAction="http://dp2003.com/dp2library/dp2library/SetFriendsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetFriends", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetFriendsResponse")]
         System.IAsyncResult BeginSetFriends(string strAction, string strReaderBarcode, string strComment, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetFriends(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchOneDb", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOneDbResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneDb", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneDbResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchOneDb(string strQueryWord, string strDbName, string strFrom, string strMatchStyle, string strLang, long lMaxCount, string strResultSetName, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchOneDb", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOneDbResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneDb", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneDbResponse")]
         System.IAsyncResult BeginSearchOneDb(string strQueryWord, string strDbName, string strFrom, string strMatchStyle, string strLang, long lMaxCount, string strResultSetName, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchOneDb(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Search", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Search", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Search(string strQueryXml, string strResultSetName, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Search", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Search", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchResponse")]
         System.IAsyncResult BeginSearch(string strQueryXml, string strResultSetName, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearch(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSearchResultResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetSearchResult(out DigitalPlatform.LibraryClient.localhost.Record[] searchresults, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSearchResultResponse")]
         System.IAsyncResult BeginGetSearchResult(string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetSearchResult(out DigitalPlatform.LibraryClient.localhost.Record[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetRecord", ReplyAction="http://dp2003.com/dp2library/dp2library/GetRecordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRecord", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRecordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetRecord(out byte[] timestamp, out string strXml, string strPath);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetRecord", ReplyAction="http://dp2003.com/dp2library/dp2library/GetRecordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRecord", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRecordResponse")]
         System.IAsyncResult BeginGetRecord(string strPath, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetRecord(out byte[] timestamp, out string strXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetBrowseRecords", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBrowseRecordsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBrowseRecords", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBrowseRecordsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetBrowseRecords(out DigitalPlatform.LibraryClient.localhost.Record[] searchresults, string[] paths, string strBrowseInfoStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetBrowseRecords", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBrowseRecordsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBrowseRecords", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBrowseRecordsResponse")]
         System.IAsyncResult BeginGetBrowseRecords(string[] paths, string strBrowseInfoStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetBrowseRecords(out DigitalPlatform.LibraryClient.localhost.Record[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ListBiblioDbFroms", ReplyAction="http://dp2003.com/dp2library/dp2library/ListBiblioDbFromsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListBiblioDbFroms", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListBiblioDbFromsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListBiblioDbFroms(out DigitalPlatform.LibraryClient.localhost.BiblioDbFromInfo[] infos, string strDbType, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ListBiblioDbFroms", ReplyAction="http://dp2003.com/dp2library/dp2library/ListBiblioDbFromsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListBiblioDbFroms", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListBiblioDbFromsResponse")]
         System.IAsyncResult BeginListBiblioDbFroms(string strDbType, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndListBiblioDbFroms(out DigitalPlatform.LibraryClient.localhost.BiblioDbFromInfo[] infos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchBiblio", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchBiblioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchBiblio", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchBiblioResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchBiblio(out string strQueryXml, string strBiblioDbNames, string strQueryWord, int nPerMax, string strFromStyle, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, string strLocationFilter);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchBiblio", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchBiblioResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchBiblio", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchBiblioResponse")]
         System.IAsyncResult BeginSearchBiblio(string strBiblioDbNames, string strQueryWord, int nPerMax, string strFromStyle, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, string strLocationFilter, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchBiblio(out string strQueryXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetBiblioInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetBiblioInfo(out string strOutputBiblioRecPath, out byte[] baOutputTimestamp, string strAction, string strBiblioRecPath, string strBiblioType, string strBiblio, byte[] baTimestamp, string strComment, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetBiblioInfoResponse")]
         System.IAsyncResult BeginSetBiblioInfo(string strAction, string strBiblioRecPath, string strBiblioType, string strBiblio, byte[] baTimestamp, string strComment, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetBiblioInfo(out string strOutputBiblioRecPath, out byte[] baOutputTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/CopyBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/CopyBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/CopyBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/CopyBiblioInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult CopyBiblioInfo(out string strOutputBiblio, out string strOutputBiblioRecPath, out byte[] baOutputTimestamp, string strAction, string strBiblioRecPath, string strBiblioType, string strBiblio, byte[] baTimestamp, string strNewBiblioRecPath, string strNewBiblio, string strMergeStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/CopyBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/CopyBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/CopyBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/CopyBiblioInfoResponse")]
         System.IAsyncResult BeginCopyBiblioInfo(string strAction, string strBiblioRecPath, string strBiblioType, string strBiblio, byte[] baTimestamp, string strNewBiblioRecPath, string strNewBiblio, string strMergeStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndCopyBiblioInfo(out string strOutputBiblio, out string strOutputBiblioRecPath, out byte[] baOutputTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetBiblioInfo(out string strBiblio, string strBiblioRecPath, string strBiblioXml, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfoResponse")]
         System.IAsyncResult BeginGetBiblioInfo(string strBiblioRecPath, string strBiblioXml, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetBiblioInfo(out string strBiblio, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetBiblioInfos", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioInfosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfos", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfosResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetBiblioInfos(out string[] results, out byte[] baTimestamp, string strBiblioRecPath, string strBiblioXml, string[] formats);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetBiblioInfos", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioInfosResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfos", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioInfosResponse")]
         System.IAsyncResult BeginGetBiblioInfos(string strBiblioRecPath, string strBiblioXml, string[] formats, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetBiblioInfos(out string[] results, out byte[] baTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchItem", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchItemResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItem", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchItem(string strItemDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchItem", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchItemResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItem", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemResponse")]
         System.IAsyncResult BeginSearchItem(string strItemDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchItem(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetItemInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetItemInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetItemInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetItemInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetItemInfo(out string strResult, out string strItemRecPath, out byte[] item_timestamp, out string strBiblio, out string strBiblioRecPath, string strItemDbType, string strBarcode, string strItemXml, string strResultType, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetItemInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetItemInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetItemInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetItemInfoResponse")]
         System.IAsyncResult BeginGetItemInfo(string strItemDbType, string strBarcode, string strItemXml, string strResultType, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetItemInfo(out string strResult, out string strItemRecPath, out byte[] item_timestamp, out string strBiblio, out string strBiblioRecPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchItemDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchItemDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchItemDup(out string[] paths, string strBarcode, int nMax);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchItemDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchItemDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchItemDupResponse")]
         System.IAsyncResult BeginSearchItemDup(string strBarcode, int nMax, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchItemDup(out string[] paths, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetBiblioSummary", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioSummaryResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioSummary", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioSummaryResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetBiblioSummary(out string strBiblioRecPath, out string strSummary, string strItemBarcode, string strConfirmItemRecPath, string strBiblioRecPathExclude);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetBiblioSummary", ReplyAction="http://dp2003.com/dp2library/dp2library/GetBiblioSummaryResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioSummary", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetBiblioSummaryResponse")]
         System.IAsyncResult BeginGetBiblioSummary(string strItemBarcode, string strConfirmItemRecPath, string strBiblioRecPathExclude, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetBiblioSummary(out string strBiblioRecPath, out string strSummary, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Borrow", ReplyAction="http://dp2003.com/dp2library/dp2library/BorrowResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Borrow", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BorrowResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Borrow(
                     out string[] item_records, 
                     out string[] reader_records, 
@@ -14448,462 +14831,468 @@ namespace DigitalPlatform.LibraryClient.localhost {
                     string strReaderFormatList, 
                     string strBiblioFormatList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Borrow", ReplyAction="http://dp2003.com/dp2library/dp2library/BorrowResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Borrow", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BorrowResponse")]
         System.IAsyncResult BeginBorrow(bool bRenew, string strReaderBarcode, string strItemBarcode, string strConfirmItemRecPath, bool bForce, string[] saBorrowedItemBarcode, string strStyle, string strItemFormatList, string strReaderFormatList, string strBiblioFormatList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndBorrow(out string[] item_records, out string[] reader_records, out string[] biblio_records, out DigitalPlatform.LibraryClient.localhost.BorrowInfo borrow_info, out string[] aDupPath, out string strOutputReaderBarcode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Return", ReplyAction="http://dp2003.com/dp2library/dp2library/ReturnResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Return", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ReturnResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Return(out string[] item_records, out string[] reader_records, out string[] biblio_records, out string[] aDupPath, out string strOutputReaderBarcode, out DigitalPlatform.LibraryClient.localhost.ReturnInfo return_info, string strAction, string strReaderBarcode, string strItemBarcode, string strComfirmItemRecPath, bool bForce, string strStyle, string strItemFormatList, string strReaderFormatList, string strBiblioFormatList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Return", ReplyAction="http://dp2003.com/dp2library/dp2library/ReturnResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Return", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ReturnResponse")]
         System.IAsyncResult BeginReturn(string strAction, string strReaderBarcode, string strItemBarcode, string strComfirmItemRecPath, bool bForce, string strStyle, string strItemFormatList, string strReaderFormatList, string strBiblioFormatList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndReturn(out string[] item_records, out string[] reader_records, out string[] biblio_records, out string[] aDupPath, out string strOutputReaderBarcode, out DigitalPlatform.LibraryClient.localhost.ReturnInfo return_info, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Reservation", ReplyAction="http://dp2003.com/dp2library/dp2library/ReservationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Reservation", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ReservationResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Reservation(string strFunction, string strReaderBarcode, string strItemBarcodeList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Reservation", ReplyAction="http://dp2003.com/dp2library/dp2library/ReservationResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Reservation", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ReservationResponse")]
         System.IAsyncResult BeginReservation(string strFunction, string strReaderBarcode, string strItemBarcodeList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndReservation(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Amerce", ReplyAction="http://dp2003.com/dp2library/dp2library/AmerceResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Amerce", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/AmerceResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Amerce(out DigitalPlatform.LibraryClient.localhost.AmerceItem[] failed_items, out string strReaderXml, string strFunction, string strReaderBarcode, DigitalPlatform.LibraryClient.localhost.AmerceItem[] amerce_items);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Amerce", ReplyAction="http://dp2003.com/dp2library/dp2library/AmerceResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Amerce", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/AmerceResponse")]
         System.IAsyncResult BeginAmerce(string strFunction, string strReaderBarcode, DigitalPlatform.LibraryClient.localhost.AmerceItem[] amerce_items, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndAmerce(out DigitalPlatform.LibraryClient.localhost.AmerceItem[] failed_items, out string strReaderXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetIssues", ReplyAction="http://dp2003.com/dp2library/dp2library/GetIssuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssues", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssuesResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetIssues(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] issueinfos, string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetIssues", ReplyAction="http://dp2003.com/dp2library/dp2library/GetIssuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssues", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssuesResponse")]
         System.IAsyncResult BeginGetIssues(string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetIssues(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] issueinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetIssues", ReplyAction="http://dp2003.com/dp2library/dp2library/SetIssuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetIssues", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetIssuesResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetIssues(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] issueinfos);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetIssues", ReplyAction="http://dp2003.com/dp2library/dp2library/SetIssuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetIssues", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetIssuesResponse")]
         System.IAsyncResult BeginSetIssues(string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] issueinfos, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetIssues(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetIssueInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetIssueInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssueInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssueInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetIssueInfo(out string strResult, out string strIssueRecPath, out byte[] issue_timestamp, out string strBiblio, out string strOutputBiblioRecPath, string strRefID, string strItemXml, string strResultType, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetIssueInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetIssueInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssueInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetIssueInfoResponse")]
         System.IAsyncResult BeginGetIssueInfo(string strRefID, string strItemXml, string strResultType, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetIssueInfo(out string strResult, out string strIssueRecPath, out byte[] issue_timestamp, out string strBiblio, out string strOutputBiblioRecPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchIssueDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchIssueDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchIssueDup(out string[] paths, string strPublishTime, string strBiblioRecPath, int nMax);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchIssueDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchIssueDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueDupResponse")]
         System.IAsyncResult BeginSearchIssueDup(string strPublishTime, string strBiblioRecPath, int nMax, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchIssueDup(out string[] paths, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchIssue", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchIssueResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssue", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchIssue(string strIssueDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchIssue", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchIssueResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssue", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchIssueResponse")]
         System.IAsyncResult BeginSearchIssue(string strIssueDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchIssue(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetEntities", ReplyAction="http://dp2003.com/dp2library/dp2library/GetEntitiesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetEntities", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetEntitiesResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetEntities(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] entityinfos, string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetEntities", ReplyAction="http://dp2003.com/dp2library/dp2library/GetEntitiesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetEntities", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetEntitiesResponse")]
         System.IAsyncResult BeginGetEntities(string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetEntities(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] entityinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetEntities", ReplyAction="http://dp2003.com/dp2library/dp2library/SetEntitiesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetEntities", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetEntitiesResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetEntities(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] entityinfos);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetEntities", ReplyAction="http://dp2003.com/dp2library/dp2library/SetEntitiesResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetEntities", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetEntitiesResponse")]
         System.IAsyncResult BeginSetEntities(string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] entityinfos, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetEntities(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOrders", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrders", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrdersResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOrders(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] orderinfos, string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOrders", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrders", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrdersResponse")]
         System.IAsyncResult BeginGetOrders(string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOrders(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] orderinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetOrders", ReplyAction="http://dp2003.com/dp2library/dp2library/SetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOrders", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOrdersResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetOrders(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] orderinfos);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetOrders", ReplyAction="http://dp2003.com/dp2library/dp2library/SetOrdersResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOrders", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOrdersResponse")]
         System.IAsyncResult BeginSetOrders(string strBiblioRecPath, DigitalPlatform.LibraryClient.localhost.EntityInfo[] orderinfos, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetOrders(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] errorinfos, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOrderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOrderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrderInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOrderInfo(out string strResult, out string strOrderRecPath, out byte[] order_timestamp, out string strBiblio, out string strOutputBiblioRecPath, string strRefID, string strItemXml, string strResultType, string strBiblioType);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOrderInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOrderInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrderInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOrderInfoResponse")]
         System.IAsyncResult BeginGetOrderInfo(string strRefID, string strItemXml, string strResultType, string strBiblioType, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOrderInfo(out string strResult, out string strOrderRecPath, out byte[] order_timestamp, out string strBiblio, out string strOutputBiblioRecPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchOrderDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOrderDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchOrderDup(out string[] paths, string strIndex, string strBiblioRecPath, int nMax);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchOrderDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOrderDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderDupResponse")]
         System.IAsyncResult BeginSearchOrderDup(string strIndex, string strBiblioRecPath, int nMax, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchOrderDup(out string[] paths, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchOrder", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOrderResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrder", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchOrder(string strOrderDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchOrder", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOrderResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrder", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOrderResponse")]
         System.IAsyncResult BeginSearchOrder(string strOrderDbName, string strQueryWord, int nPerMax, string strFrom, string strMatchStyle, string strLang, string strResultSetName, string strSearchStyle, string strOutputStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchOrder(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetClock", ReplyAction="http://dp2003.com/dp2library/dp2library/SetClockResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetClock", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetClockResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetClock(string strTime);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetClock", ReplyAction="http://dp2003.com/dp2library/dp2library/SetClockResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetClock", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetClockResponse")]
         System.IAsyncResult BeginSetClock(string strTime, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetClock(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetClock", ReplyAction="http://dp2003.com/dp2library/dp2library/GetClockResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetClock", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetClockResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetClock(out string strTime);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetClock", ReplyAction="http://dp2003.com/dp2library/dp2library/GetClockResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetClock", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetClockResponse")]
         System.IAsyncResult BeginGetClock(System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetClock(out string strTime, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ResetPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ResetPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ResetPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ResetPasswordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ResetPassword(out string strMessage, string strParameters, string strMessageTemplate);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ResetPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ResetPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ResetPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ResetPasswordResponse")]
         System.IAsyncResult BeginResetPassword(string strParameters, string strMessageTemplate, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndResetPassword(out string strMessage, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetValueTable", ReplyAction="http://dp2003.com/dp2library/dp2library/GetValueTableResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetValueTable", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetValueTableResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetValueTable(out string[] values, string strTableName, string strDbName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetValueTable", ReplyAction="http://dp2003.com/dp2library/dp2library/GetValueTableResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetValueTable", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetValueTableResponse")]
         System.IAsyncResult BeginGetValueTable(string strTableName, string strDbName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetValueTable(out string[] values, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOperLogs", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOperLogsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogs", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOperLogs(out DigitalPlatform.LibraryClient.localhost.OperLogInfo[] records, string strFileName, long lIndex, long lHint, int nCount, string strStyle, string strFilter);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOperLogs", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOperLogsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogs", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogsResponse")]
         System.IAsyncResult BeginGetOperLogs(string strFileName, long lIndex, long lHint, int nCount, string strStyle, string strFilter, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOperLogs(out DigitalPlatform.LibraryClient.localhost.OperLogInfo[] records, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOperLog", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOperLogResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLog", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOperLog(out string strXml, out long lHintNext, out byte[] attachment_data, out long lAttachmentTotalLength, string strFileName, long lIndex, long lHint, string strStyle, string strFilter, long lAttachmentFragmentStart, int nAttachmentFragmentLength);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOperLog", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOperLogResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLog", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOperLogResponse")]
         System.IAsyncResult BeginGetOperLog(string strFileName, long lIndex, long lHint, string strStyle, string strFilter, long lAttachmentFragmentStart, int nAttachmentFragmentLength, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOperLog(out string strXml, out long lHintNext, out byte[] attachment_data, out long lAttachmentTotalLength, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetCalendar", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCalendarResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCalendar", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCalendarResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetCalendar(out DigitalPlatform.LibraryClient.localhost.CalenderInfo[] contents, string strAction, string strName, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetCalendar", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCalendarResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCalendar", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCalendarResponse")]
         System.IAsyncResult BeginGetCalendar(string strAction, string strName, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetCalendar(out DigitalPlatform.LibraryClient.localhost.CalenderInfo[] contents, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetCalendar", ReplyAction="http://dp2003.com/dp2library/dp2library/SetCalendarResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCalendar", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCalendarResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetCalendar(string strAction, DigitalPlatform.LibraryClient.localhost.CalenderInfo info);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetCalendar", ReplyAction="http://dp2003.com/dp2library/dp2library/SetCalendarResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCalendar", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetCalendarResponse")]
         System.IAsyncResult BeginSetCalendar(string strAction, DigitalPlatform.LibraryClient.localhost.CalenderInfo info, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetCalendar(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/BatchTask", ReplyAction="http://dp2003.com/dp2library/dp2library/BatchTaskResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/BatchTask", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BatchTaskResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult BatchTask(out DigitalPlatform.LibraryClient.localhost.BatchTaskInfo resultInfo, string strName, string strAction, DigitalPlatform.LibraryClient.localhost.BatchTaskInfo info);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/BatchTask", ReplyAction="http://dp2003.com/dp2library/dp2library/BatchTaskResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/BatchTask", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/BatchTaskResponse")]
         System.IAsyncResult BeginBatchTask(string strName, string strAction, DigitalPlatform.LibraryClient.localhost.BatchTaskInfo info, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndBatchTask(out DigitalPlatform.LibraryClient.localhost.BatchTaskInfo resultInfo, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ClearAllDbs", ReplyAction="http://dp2003.com/dp2library/dp2library/ClearAllDbsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ClearAllDbs", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ClearAllDbsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ClearAllDbs();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ClearAllDbs", ReplyAction="http://dp2003.com/dp2library/dp2library/ClearAllDbsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ClearAllDbs", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ClearAllDbsResponse")]
         System.IAsyncResult BeginClearAllDbs(System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndClearAllDbs(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ManageDatabase", ReplyAction="http://dp2003.com/dp2library/dp2library/ManageDatabaseResponse")]
-        DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageDatabase(out string strOutputInfo, string strAction, string strDatabaseName, string strDatabaseInfo);
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageDatabase", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageDatabaseResponse")]
+        DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageDatabase(out string strOutputInfo, string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ManageDatabase", ReplyAction="http://dp2003.com/dp2library/dp2library/ManageDatabaseResponse")]
-        System.IAsyncResult BeginManageDatabase(string strAction, string strDatabaseName, string strDatabaseInfo, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageDatabase", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageDatabaseResponse")]
+        System.IAsyncResult BeginManageDatabase(string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndManageDatabase(out string strOutputInfo, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetUser", ReplyAction="http://dp2003.com/dp2library/dp2library/GetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUser", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUserResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetUser(out DigitalPlatform.LibraryClient.localhost.UserInfo[] contents, string strAction, string strName, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetUser", ReplyAction="http://dp2003.com/dp2library/dp2library/GetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUser", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUserResponse")]
         System.IAsyncResult BeginGetUser(string strAction, string strName, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetUser(out DigitalPlatform.LibraryClient.localhost.UserInfo[] contents, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetUser", ReplyAction="http://dp2003.com/dp2library/dp2library/SetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUser", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUserResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetUser(string strAction, DigitalPlatform.LibraryClient.localhost.UserInfo info);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetUser", ReplyAction="http://dp2003.com/dp2library/dp2library/SetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUser", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUserResponse")]
         System.IAsyncResult BeginSetUser(string strAction, DigitalPlatform.LibraryClient.localhost.UserInfo info, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetUser(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetChannelInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetChannelInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetChannelInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetChannelInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetChannelInfo(out DigitalPlatform.LibraryClient.localhost.ChannelInfo[] contents, string strQuery, string strStyle, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetChannelInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetChannelInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetChannelInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetChannelInfoResponse")]
         System.IAsyncResult BeginGetChannelInfo(string strQuery, string strStyle, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetChannelInfo(out DigitalPlatform.LibraryClient.localhost.ChannelInfo[] contents, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ManageChannel", ReplyAction="http://dp2003.com/dp2library/dp2library/ManageChannelResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageChannel", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageChannelResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageChannel(out DigitalPlatform.LibraryClient.localhost.ChannelInfo[] results, string strAction, string strStyle, DigitalPlatform.LibraryClient.localhost.ChannelInfo[] requests);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ManageChannel", ReplyAction="http://dp2003.com/dp2library/dp2library/ManageChannelResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageChannel", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ManageChannelResponse")]
         System.IAsyncResult BeginManageChannel(string strAction, string strStyle, DigitalPlatform.LibraryClient.localhost.ChannelInfo[] requests, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndManageChannel(out DigitalPlatform.LibraryClient.localhost.ChannelInfo[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ChangeUserPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ChangeUserPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeUserPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeUserPasswordResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ChangeUserPassword(string strUserName, string strOldPassword, string strNewPassword);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ChangeUserPassword", ReplyAction="http://dp2003.com/dp2library/dp2library/ChangeUserPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeUserPassword", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ChangeUserPasswordResponse")]
         System.IAsyncResult BeginChangeUserPassword(string strUserName, string strOldPassword, string strNewPassword, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndChangeUserPassword(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/VerifyBarcode", ReplyAction="http://dp2003.com/dp2library/dp2library/VerifyBarcodeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyBarcode", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyBarcodeResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult VerifyBarcode(out string strOutputBarcode, string strAction, string strLibraryCode, string strBarcode);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/VerifyBarcode", ReplyAction="http://dp2003.com/dp2library/dp2library/VerifyBarcodeResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyBarcode", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/VerifyBarcodeResponse")]
         System.IAsyncResult BeginVerifyBarcode(string strAction, string strLibraryCode, string strBarcode, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndVerifyBarcode(out string strOutputBarcode, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetSystemParameter", ReplyAction="http://dp2003.com/dp2library/dp2library/GetSystemParameterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSystemParameter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSystemParameterResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetSystemParameter(out string strValue, string strCategory, string strName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetSystemParameter", ReplyAction="http://dp2003.com/dp2library/dp2library/GetSystemParameterResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSystemParameter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetSystemParameterResponse")]
         System.IAsyncResult BeginGetSystemParameter(string strCategory, string strName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetSystemParameter(out string strValue, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetSystemParameter", ReplyAction="http://dp2003.com/dp2library/dp2library/SetSystemParameterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetSystemParameter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetSystemParameterResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetSystemParameter(string strCategory, string strName, string strValue);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetSystemParameter", ReplyAction="http://dp2003.com/dp2library/dp2library/SetSystemParameterResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetSystemParameter", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetSystemParameterResponse")]
         System.IAsyncResult BeginSetSystemParameter(string strCategory, string strName, string strValue, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetSystemParameter(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/UrgentRecover", ReplyAction="http://dp2003.com/dp2library/dp2library/UrgentRecoverResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/UrgentRecover", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/UrgentRecoverResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult UrgentRecover(string strXML);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/UrgentRecover", ReplyAction="http://dp2003.com/dp2library/dp2library/UrgentRecoverResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/UrgentRecover", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/UrgentRecoverResponse")]
         System.IAsyncResult BeginUrgentRecover(string strXML, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndUrgentRecover(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/RepairBorrowInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/RepairBorrowInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/RepairBorrowInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/RepairBorrowInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult RepairBorrowInfo(out int nProcessedBorrowItems, out int nTotalBorrowItems, out string strOutputReaderBarcode, out string[] aDupPath, string strAction, string strReaderBarcode, string strItemBarcode, string strConfirmItemRecPath, int nStart, int nCount);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/RepairBorrowInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/RepairBorrowInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/RepairBorrowInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/RepairBorrowInfoResponse")]
         System.IAsyncResult BeginRepairBorrowInfo(string strAction, string strReaderBarcode, string strItemBarcode, string strConfirmItemRecPath, int nStart, int nCount, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndRepairBorrowInfo(out int nProcessedBorrowItems, out int nTotalBorrowItems, out string strOutputReaderBarcode, out string[] aDupPath, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/PassGate", ReplyAction="http://dp2003.com/dp2library/dp2library/PassGateResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/PassGate", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/PassGateResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult PassGate(out string[] results, string strReaderBarcode, string strGateName, string strResultTypeList);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/PassGate", ReplyAction="http://dp2003.com/dp2library/dp2library/PassGateResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/PassGate", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/PassGateResponse")]
         System.IAsyncResult BeginPassGate(string strReaderBarcode, string strGateName, string strResultTypeList, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndPassGate(out string[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Foregift", ReplyAction="http://dp2003.com/dp2library/dp2library/ForegiftResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Foregift", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ForegiftResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Foregift(out string strOutputReaderXml, out string strOutputID, string strAction, string strReaderBarcode);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Foregift", ReplyAction="http://dp2003.com/dp2library/dp2library/ForegiftResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Foregift", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ForegiftResponse")]
         System.IAsyncResult BeginForegift(string strAction, string strReaderBarcode, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndForegift(out string strOutputReaderXml, out string strOutputID, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Hire", ReplyAction="http://dp2003.com/dp2library/dp2library/HireResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Hire", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/HireResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Hire(out string strOutputReaderXml, out string strOutputID, string strAction, string strReaderBarcode);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Hire", ReplyAction="http://dp2003.com/dp2library/dp2library/HireResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Hire", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/HireResponse")]
         System.IAsyncResult BeginHire(string strAction, string strReaderBarcode, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndHire(out string strOutputReaderXml, out string strOutputID, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/Settlement", ReplyAction="http://dp2003.com/dp2library/dp2library/SettlementResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Settlement", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SettlementResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult Settlement(string strAction, string[] ids);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/Settlement", ReplyAction="http://dp2003.com/dp2library/dp2library/SettlementResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/Settlement", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SettlementResponse")]
         System.IAsyncResult BeginSettlement(string strAction, string[] ids, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSettlement(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchOneClassCallNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOneClassCallNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneClassCallNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneClassCallNumberResponse" +
+            "")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchOneClassCallNumber(out string strQueryXml, string strArrangeGroupName, string strClass, string strResultSetName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchOneClassCallNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchOneClassCallNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneClassCallNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchOneClassCallNumberResponse" +
+            "")]
         System.IAsyncResult BeginSearchOneClassCallNumber(string strArrangeGroupName, string strClass, string strResultSetName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchOneClassCallNumber(out string strQueryXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetCallNumberSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCallNumberSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCallNumberSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCallNumberSearchResultRespons" +
+            "e")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetCallNumberSearchResult(out DigitalPlatform.LibraryClient.localhost.CallNumberSearchResult[] searchresults, string strArrangeGroupName, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetCallNumberSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCallNumberSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCallNumberSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCallNumberSearchResultRespons" +
+            "e")]
         System.IAsyncResult BeginGetCallNumberSearchResult(string strArrangeGroupName, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetCallNumberSearchResult(out DigitalPlatform.LibraryClient.localhost.CallNumberSearchResult[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOneClassTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOneClassTailNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetOneClassTailNumber(out string strTailNumber, string strArrangeGroupName, string strClass);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetOneClassTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetOneClassTailNumberResponse")]
         System.IAsyncResult BeginGetOneClassTailNumber(string strArrangeGroupName, string strClass, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetOneClassTailNumber(out string strTailNumber, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SetOneClassTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOneClassTailNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetOneClassTailNumber(out string strOutputNumber, string strAction, string strArrangeGroupName, string strClass, string strTestNumber);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SetOneClassTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOneClassTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetOneClassTailNumberResponse")]
         System.IAsyncResult BeginSetOneClassTailNumber(string strAction, string strArrangeGroupName, string strClass, string strTestNumber, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetOneClassTailNumber(out string strOutputNumber, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchUsedZhongcihao", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchUsedZhongcihaoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchUsedZhongcihao", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchUsedZhongcihaoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchUsedZhongcihao(out string strQueryXml, string strZhongcihaoGroupName, string strClass, string strResultSetName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchUsedZhongcihao", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchUsedZhongcihaoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchUsedZhongcihao", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchUsedZhongcihaoResponse")]
         System.IAsyncResult BeginSearchUsedZhongcihao(string strZhongcihaoGroupName, string strClass, string strResultSetName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchUsedZhongcihao(out string strQueryXml, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetZhongcihaoSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetZhongcihaoSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoSearchResultRespons" +
+            "e")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetZhongcihaoSearchResult(out DigitalPlatform.LibraryClient.localhost.ZhongcihaoSearchResult[] searchresults, string strZhongcihaoGroupName, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetZhongcihaoSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetZhongcihaoSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoSearchResultRespons" +
+            "e")]
         System.IAsyncResult BeginGetZhongcihaoSearchResult(string strZhongcihaoGroupName, string strResultSetName, long lStart, long lCount, string strBrowseInfoStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetZhongcihaoSearchResult(out DigitalPlatform.LibraryClient.localhost.ZhongcihaoSearchResult[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetZhongcihaoTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoTailNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetZhongcihaoTailNumber(out string strTailNumber, string strZhongcihaoGroupName, string strClass);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/GetZhongcihaoTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetZhongcihaoTailNumberResponse")]
         System.IAsyncResult BeginGetZhongcihaoTailNumber(string strZhongcihaoGroupName, string strClass, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetZhongcihaoTailNumber(out string strTailNumber, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SetZhongcihaoTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetZhongcihaoTailNumberResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetZhongcihaoTailNumber(out string strOutputNumber, string strAction, string strZhongcihaoGroupName, string strClass, string strTestNumber);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/dp2library/SetZhongcihaoTailNumberResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetZhongcihaoTailNumber", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetZhongcihaoTailNumberResponse")]
         System.IAsyncResult BeginSetZhongcihaoTailNumber(string strAction, string strZhongcihaoGroupName, string strClass, string strTestNumber, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetZhongcihaoTailNumber(out string strOutputNumber, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SearchDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchDupResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SearchDup(out string strUsedProjectName, string strOriginBiblioRecPath, string strOriginBiblioRecXml, string strProjectName, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SearchDup", ReplyAction="http://dp2003.com/dp2library/dp2library/SearchDupResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchDup", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SearchDupResponse")]
         System.IAsyncResult BeginSearchDup(string strOriginBiblioRecPath, string strOriginBiblioRecXml, string strProjectName, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSearchDup(out string strUsedProjectName, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetDupSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetDupSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetDupSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetDupSearchResultResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetDupSearchResult(out DigitalPlatform.LibraryClient.localhost.DupSearchResult[] searchresults, long lStart, long lCount, string strBrowseInfoStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetDupSearchResult", ReplyAction="http://dp2003.com/dp2library/dp2library/GetDupSearchResultResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetDupSearchResult", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetDupSearchResultResponse")]
         System.IAsyncResult BeginGetDupSearchResult(long lStart, long lCount, string strBrowseInfoStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetDupSearchResult(out DigitalPlatform.LibraryClient.localhost.DupSearchResult[] searchresults, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/ListDupProjectInfos", ReplyAction="http://dp2003.com/dp2library/dp2library/ListDupProjectInfosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListDupProjectInfos", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListDupProjectInfosResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListDupProjectInfos(out DigitalPlatform.LibraryClient.localhost.DupProjectInfo[] results, string strOriginBiblioDbName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/ListDupProjectInfos", ReplyAction="http://dp2003.com/dp2library/dp2library/ListDupProjectInfosResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/ListDupProjectInfos", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/ListDupProjectInfosResponse")]
         System.IAsyncResult BeginListDupProjectInfos(string strOriginBiblioDbName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndListDupProjectInfos(out DigitalPlatform.LibraryClient.localhost.DupProjectInfo[] results, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetUtilInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetUtilInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUtilInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUtilInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetUtilInfo(out string strValue, string strAction, string strDbName, string strFrom, string strKey, string strValueAttrName);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetUtilInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/GetUtilInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUtilInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetUtilInfoResponse")]
         System.IAsyncResult BeginGetUtilInfo(string strAction, string strDbName, string strFrom, string strKey, string strValueAttrName, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetUtilInfo(out string strValue, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/SetUtilInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetUtilInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUtilInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUtilInfoResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult SetUtilInfo(string strAction, string strDbName, string strFrom, string strRootElementName, string strKeyAttrName, string strValueAttrName, string strKey, string strValue);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/SetUtilInfo", ReplyAction="http://dp2003.com/dp2library/dp2library/SetUtilInfoResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUtilInfo", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/SetUtilInfoResponse")]
         System.IAsyncResult BeginSetUtilInfo(string strAction, string strDbName, string strFrom, string strRootElementName, string strKeyAttrName, string strValueAttrName, string strKey, string strValue, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndSetUtilInfo(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetRes", ReplyAction="http://dp2003.com/dp2library/dp2library/GetResResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRes", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetResResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetRes(out byte[] baContent, out string strMetadata, out string strOutputResPath, out byte[] baOutputTimestamp, string strResPath, long nStart, int nLength, string strStyle);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetRes", ReplyAction="http://dp2003.com/dp2library/dp2library/GetResResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetRes", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetResResponse")]
         System.IAsyncResult BeginGetRes(string strResPath, long nStart, int nLength, string strStyle, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetRes(out byte[] baContent, out string strMetadata, out string strOutputResPath, out byte[] baOutputTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/WriteRes", ReplyAction="http://dp2003.com/dp2library/dp2library/WriteResResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/WriteRes", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/WriteResResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult WriteRes(out string strOutputResPath, out byte[] baOutputTimestamp, string strResPath, string strRanges, long lTotalLength, byte[] baContent, string strMetadata, string strStyle, byte[] baInputTimestamp);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/WriteRes", ReplyAction="http://dp2003.com/dp2library/dp2library/WriteResResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/WriteRes", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/WriteResResponse")]
         System.IAsyncResult BeginWriteRes(string strResPath, string strRanges, long lTotalLength, byte[] baContent, string strMetadata, string strStyle, byte[] baInputTimestamp, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndWriteRes(out string strOutputResPath, out byte[] baOutputTimestamp, System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/dp2library/GetComments", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCommentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetComments", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentsResponse")]
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetComments(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] commentinfos, string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/dp2library/GetComments", ReplyAction="http://dp2003.com/dp2library/dp2library/GetCommentsResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://dp2003.com/dp2library/rest/dp2libraryREST/GetComments", ReplyAction="http://dp2003.com/dp2library/rest/dp2libraryREST/GetCommentsResponse")]
         System.IAsyncResult BeginGetComments(string strBiblioRecPath, long lStart, long lCount, string strStyle, string strLang, System.AsyncCallback callback, object asyncState);
         
         DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndGetComments(out DigitalPlatform.LibraryClient.localhost.EntityInfo[] commentinfos, System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface dp2libraryChannel : DigitalPlatform.LibraryClient.localhost.dp2library, System.ServiceModel.IClientChannel {
+    public interface dp2libraryRESTChannel : DigitalPlatform.LibraryClient.localhost.dp2libraryREST, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -15426,6 +15815,32 @@ namespace DigitalPlatform.LibraryClient.localhost {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((DigitalPlatform.LibraryClient.localhost.LibraryServerResult)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class OnlineStatisCompletedEventArgs1 : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results1;
+        
+        public OnlineStatisCompletedEventArgs1(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results1 = results;
+        }
+        
+        public string[] results {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string[])(this.results1[0]));
+            }
+        }
+        
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((DigitalPlatform.LibraryClient.localhost.LibraryServerResult)(this.results1[1]));
             }
         }
     }
@@ -17819,7 +18234,7 @@ namespace DigitalPlatform.LibraryClient.localhost {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class dp2libraryClient : System.ServiceModel.ClientBase<DigitalPlatform.LibraryClient.localhost.dp2library>, DigitalPlatform.LibraryClient.localhost.dp2library {
+    public partial class dp2libraryRESTClient : System.ServiceModel.ClientBase<DigitalPlatform.LibraryClient.localhost.dp2libraryREST>, DigitalPlatform.LibraryClient.localhost.dp2libraryREST {
         
         private BeginOperationDelegate onBeginSetCommentsDelegate;
         
@@ -17928,6 +18343,12 @@ namespace DigitalPlatform.LibraryClient.localhost {
         private EndOperationDelegate onEndSetPinyinDelegate;
         
         private System.Threading.SendOrPostCallback onSetPinyinCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginOnlineStatisDelegate;
+        
+        private EndOperationDelegate onEndOnlineStatisDelegate;
+        
+        private System.Threading.SendOrPostCallback onOnlineStatisCompletedDelegate;
         
         private BeginOperationDelegate onBeginGetVersionDelegate;
         
@@ -18439,22 +18860,22 @@ namespace DigitalPlatform.LibraryClient.localhost {
         
         private System.Threading.SendOrPostCallback onGetCommentsCompletedDelegate;
         
-        public dp2libraryClient() {
+        public dp2libraryRESTClient() {
         }
         
-        public dp2libraryClient(string endpointConfigurationName) : 
+        public dp2libraryRESTClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public dp2libraryClient(string endpointConfigurationName, string remoteAddress) : 
+        public dp2libraryRESTClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public dp2libraryClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public dp2libraryRESTClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public dp2libraryClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public dp2libraryRESTClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -18493,6 +18914,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
         public event System.EventHandler<GetPinyinCompletedEventArgs1> GetPinyinCompleted;
         
         public event System.EventHandler<SetPinyinCompletedEventArgs1> SetPinyinCompleted;
+        
+        public event System.EventHandler<OnlineStatisCompletedEventArgs1> OnlineStatisCompleted;
         
         public event System.EventHandler<GetVersionCompletedEventArgs1> GetVersionCompleted;
         
@@ -19188,13 +19611,13 @@ namespace DigitalPlatform.LibraryClient.localhost {
                         strDateRangeString}, this.onEndExistStatisInfoDelegate, this.onExistStatisInfoCompletedDelegate, userState);
         }
         
-        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetFile(out byte[] baContent, out string strFileTime, string strCategory, string strFileName, long lStart, long lLength) {
-            return base.Channel.GetFile(out baContent, out strFileTime, strCategory, strFileName, lStart, lLength);
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetFile(out byte[] baContent, out string strFileTime, string strCategory, string strFileName, long lStart, long lLength, string strStyle) {
+            return base.Channel.GetFile(out baContent, out strFileTime, strCategory, strFileName, lStart, lLength, strStyle);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetFile(string strCategory, string strFileName, long lStart, long lLength, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetFile(strCategory, strFileName, lStart, lLength, callback, asyncState);
+        public System.IAsyncResult BeginGetFile(string strCategory, string strFileName, long lStart, long lLength, string strStyle, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetFile(strCategory, strFileName, lStart, lLength, strStyle, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -19207,7 +19630,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
             string strFileName = ((string)(inValues[1]));
             long lStart = ((long)(inValues[2]));
             long lLength = ((long)(inValues[3]));
-            return this.BeginGetFile(strCategory, strFileName, lStart, lLength, callback, asyncState);
+            string strStyle = ((string)(inValues[4]));
+            return this.BeginGetFile(strCategory, strFileName, lStart, lLength, strStyle, callback, asyncState);
         }
         
         private object[] OnEndGetFile(System.IAsyncResult result) {
@@ -19227,11 +19651,11 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
         }
         
-        public void GetFileAsync(string strCategory, string strFileName, long lStart, long lLength) {
-            this.GetFileAsync(strCategory, strFileName, lStart, lLength, null);
+        public void GetFileAsync(string strCategory, string strFileName, long lStart, long lLength, string strStyle) {
+            this.GetFileAsync(strCategory, strFileName, lStart, lLength, strStyle, null);
         }
         
-        public void GetFileAsync(string strCategory, string strFileName, long lStart, long lLength, object userState) {
+        public void GetFileAsync(string strCategory, string strFileName, long lStart, long lLength, string strStyle, object userState) {
             if ((this.onBeginGetFileDelegate == null)) {
                 this.onBeginGetFileDelegate = new BeginOperationDelegate(this.OnBeginGetFile);
             }
@@ -19245,7 +19669,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
                         strCategory,
                         strFileName,
                         lStart,
-                        lLength}, this.onEndGetFileDelegate, this.onGetFileCompletedDelegate, userState);
+                        lLength,
+                        strStyle}, this.onEndGetFileDelegate, this.onGetFileCompletedDelegate, userState);
         }
         
         public DigitalPlatform.LibraryClient.localhost.LibraryServerResult ListFile(out DigitalPlatform.LibraryClient.localhost.FileItemInfo[] infos, string strAction, string strCategory, string strFileName, long lStart, long lLength) {
@@ -19614,13 +20039,13 @@ namespace DigitalPlatform.LibraryClient.localhost {
                         questions}, this.onEndGetAuthorNumberDelegate, this.onGetAuthorNumberCompletedDelegate, userState);
         }
         
-        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetPinyin(out string strPinyinXml, string strText) {
-            return base.Channel.GetPinyin(out strPinyinXml, strText);
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetPinyin(out string strPinyinXml, string strType, string strText) {
+            return base.Channel.GetPinyin(out strPinyinXml, strType, strText);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetPinyin(string strText, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetPinyin(strText, callback, asyncState);
+        public System.IAsyncResult BeginGetPinyin(string strType, string strText, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetPinyin(strType, strText, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -19629,8 +20054,9 @@ namespace DigitalPlatform.LibraryClient.localhost {
         }
         
         private System.IAsyncResult OnBeginGetPinyin(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string strText = ((string)(inValues[0]));
-            return this.BeginGetPinyin(strText, callback, asyncState);
+            string strType = ((string)(inValues[0]));
+            string strText = ((string)(inValues[1]));
+            return this.BeginGetPinyin(strType, strText, callback, asyncState);
         }
         
         private object[] OnEndGetPinyin(System.IAsyncResult result) {
@@ -19648,11 +20074,11 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
         }
         
-        public void GetPinyinAsync(string strText) {
-            this.GetPinyinAsync(strText, null);
+        public void GetPinyinAsync(string strType, string strText) {
+            this.GetPinyinAsync(strType, strText, null);
         }
         
-        public void GetPinyinAsync(string strText, object userState) {
+        public void GetPinyinAsync(string strType, string strText, object userState) {
             if ((this.onBeginGetPinyinDelegate == null)) {
                 this.onBeginGetPinyinDelegate = new BeginOperationDelegate(this.OnBeginGetPinyin);
             }
@@ -19663,6 +20089,7 @@ namespace DigitalPlatform.LibraryClient.localhost {
                 this.onGetPinyinCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPinyinCompleted);
             }
             base.InvokeAsync(this.onBeginGetPinyinDelegate, new object[] {
+                        strType,
                         strText}, this.onEndGetPinyinDelegate, this.onGetPinyinCompletedDelegate, userState);
         }
         
@@ -19714,6 +20141,64 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
             base.InvokeAsync(this.onBeginSetPinyinDelegate, new object[] {
                         strPinyinXml}, this.onEndSetPinyinDelegate, this.onSetPinyinCompletedDelegate, userState);
+        }
+        
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult OnlineStatis(out string[] results, string action, string category, string uid, string style) {
+            return base.Channel.OnlineStatis(out results, action, category, uid, style);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginOnlineStatis(string action, string category, string uid, string style, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginOnlineStatis(action, category, uid, style, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult EndOnlineStatis(out string[] results, System.IAsyncResult result) {
+            return base.Channel.EndOnlineStatis(out results, result);
+        }
+        
+        private System.IAsyncResult OnBeginOnlineStatis(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string action = ((string)(inValues[0]));
+            string category = ((string)(inValues[1]));
+            string uid = ((string)(inValues[2]));
+            string style = ((string)(inValues[3]));
+            return this.BeginOnlineStatis(action, category, uid, style, callback, asyncState);
+        }
+        
+        private object[] OnEndOnlineStatis(System.IAsyncResult result) {
+            string[] results = this.GetDefaultValueForInitialization<string[]>();
+            DigitalPlatform.LibraryClient.localhost.LibraryServerResult retVal = this.EndOnlineStatis(out results, result);
+            return new object[] {
+                    results,
+                    retVal};
+        }
+        
+        private void OnOnlineStatisCompleted(object state) {
+            if ((this.OnlineStatisCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.OnlineStatisCompleted(this, new OnlineStatisCompletedEventArgs1(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void OnlineStatisAsync(string action, string category, string uid, string style) {
+            this.OnlineStatisAsync(action, category, uid, style, null);
+        }
+        
+        public void OnlineStatisAsync(string action, string category, string uid, string style, object userState) {
+            if ((this.onBeginOnlineStatisDelegate == null)) {
+                this.onBeginOnlineStatisDelegate = new BeginOperationDelegate(this.OnBeginOnlineStatis);
+            }
+            if ((this.onEndOnlineStatisDelegate == null)) {
+                this.onEndOnlineStatisDelegate = new EndOperationDelegate(this.OnEndOnlineStatis);
+            }
+            if ((this.onOnlineStatisCompletedDelegate == null)) {
+                this.onOnlineStatisCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnOnlineStatisCompleted);
+            }
+            base.InvokeAsync(this.onBeginOnlineStatisDelegate, new object[] {
+                        action,
+                        category,
+                        uid,
+                        style}, this.onEndOnlineStatisDelegate, this.onOnlineStatisCompletedDelegate, userState);
         }
         
         public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetVersion(out string uid) {
@@ -22897,13 +23382,13 @@ namespace DigitalPlatform.LibraryClient.localhost {
             base.InvokeAsync(this.onBeginClearAllDbsDelegate, null, this.onEndClearAllDbsDelegate, this.onClearAllDbsCompletedDelegate, userState);
         }
         
-        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageDatabase(out string strOutputInfo, string strAction, string strDatabaseName, string strDatabaseInfo) {
-            return base.Channel.ManageDatabase(out strOutputInfo, strAction, strDatabaseName, strDatabaseInfo);
+        public DigitalPlatform.LibraryClient.localhost.LibraryServerResult ManageDatabase(out string strOutputInfo, string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle) {
+            return base.Channel.ManageDatabase(out strOutputInfo, strAction, strDatabaseName, strDatabaseInfo, strStyle);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginManageDatabase(string strAction, string strDatabaseName, string strDatabaseInfo, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginManageDatabase(strAction, strDatabaseName, strDatabaseInfo, callback, asyncState);
+        public System.IAsyncResult BeginManageDatabase(string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginManageDatabase(strAction, strDatabaseName, strDatabaseInfo, strStyle, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -22915,7 +23400,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
             string strAction = ((string)(inValues[0]));
             string strDatabaseName = ((string)(inValues[1]));
             string strDatabaseInfo = ((string)(inValues[2]));
-            return this.BeginManageDatabase(strAction, strDatabaseName, strDatabaseInfo, callback, asyncState);
+            string strStyle = ((string)(inValues[3]));
+            return this.BeginManageDatabase(strAction, strDatabaseName, strDatabaseInfo, strStyle, callback, asyncState);
         }
         
         private object[] OnEndManageDatabase(System.IAsyncResult result) {
@@ -22933,11 +23419,11 @@ namespace DigitalPlatform.LibraryClient.localhost {
             }
         }
         
-        public void ManageDatabaseAsync(string strAction, string strDatabaseName, string strDatabaseInfo) {
-            this.ManageDatabaseAsync(strAction, strDatabaseName, strDatabaseInfo, null);
+        public void ManageDatabaseAsync(string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle) {
+            this.ManageDatabaseAsync(strAction, strDatabaseName, strDatabaseInfo, strStyle, null);
         }
         
-        public void ManageDatabaseAsync(string strAction, string strDatabaseName, string strDatabaseInfo, object userState) {
+        public void ManageDatabaseAsync(string strAction, string strDatabaseName, string strDatabaseInfo, string strStyle, object userState) {
             if ((this.onBeginManageDatabaseDelegate == null)) {
                 this.onBeginManageDatabaseDelegate = new BeginOperationDelegate(this.OnBeginManageDatabase);
             }
@@ -22950,7 +23436,8 @@ namespace DigitalPlatform.LibraryClient.localhost {
             base.InvokeAsync(this.onBeginManageDatabaseDelegate, new object[] {
                         strAction,
                         strDatabaseName,
-                        strDatabaseInfo}, this.onEndManageDatabaseDelegate, this.onManageDatabaseCompletedDelegate, userState);
+                        strDatabaseInfo,
+                        strStyle}, this.onEndManageDatabaseDelegate, this.onManageDatabaseCompletedDelegate, userState);
         }
         
         public DigitalPlatform.LibraryClient.localhost.LibraryServerResult GetUser(out DigitalPlatform.LibraryClient.localhost.UserInfo[] contents, string strAction, string strName, int nStart, int nCount) {

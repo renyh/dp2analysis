@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7fa1ded1-d543-4877-bb74-1d74ee9ffa6c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="7fa1ded1-d543-4877-bb74-1d74ee9ffa6c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,17 +18,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8001/dp2library/metadata" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8001/dp2library/xe/metadata" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="metadata.xsd" MetadataType="Schema" ID="b62d15a0-eb7e-4a28-be89-84623bceb68e" SourceId="1" SourceUrl="http://localhost:8001/dp2library/metadata?xsd=xsd4" />
-    <MetadataFile FileName="metadata1.xsd" MetadataType="Schema" ID="30854b3d-a9cb-4f98-8bbf-cbd2bf0e3835" SourceId="1" SourceUrl="http://localhost:8001/dp2library/metadata?xsd=xsd5" />
-    <MetadataFile FileName="metadata2.xsd" MetadataType="Schema" ID="ec137913-d2a8-47d7-887f-fa5a3f82356c" SourceId="1" SourceUrl="http://localhost:8001/dp2library/metadata?xsd=xsd3" />
-    <MetadataFile FileName="metadata3.xsd" MetadataType="Schema" ID="556257e3-662f-4dcf-808d-51455fee14eb" SourceId="1" SourceUrl="http://localhost:8001/dp2library/metadata?xsd=xsd1" />
-    <MetadataFile FileName="metadata4.xsd" MetadataType="Schema" ID="9973ad8b-1bda-4e97-a574-cb3ec4e2223d" SourceId="1" SourceUrl="http://localhost:8001/dp2library/metadata?xsd=xsd2" />
-    <MetadataFile FileName="metadata.wsdl" MetadataType="Wsdl" ID="396996b2-4206-40bc-9d1e-dcb4fff90ee7" SourceId="1" SourceUrl="http://localhost:8001/dp2library/metadata?wsdl=wsdl0" />
-    <MetadataFile FileName="metadata5.xsd" MetadataType="Schema" ID="3c8690f1-3cd8-4ca6-ac7a-b89ee9c0bd2a" SourceId="1" SourceUrl="http://localhost:8001/dp2library/metadata?xsd=xsd0" />
-    <MetadataFile FileName="LibraryService.wsdl" MetadataType="Wsdl" ID="db07f102-887f-49f3-96d9-2b73ca4f0eee" SourceId="1" SourceUrl="http://localhost:8001/dp2library/metadata" />
+    <MetadataFile FileName="metadata6.xsd" MetadataType="Schema" ID="b771d736-1b46-4b45-ac2f-e9fa5a9043b1" SourceId="1" SourceUrl="http://localhost:8001/dp2library/xe/metadata?xsd=xsd3" />
+    <MetadataFile FileName="metadata61.xsd" MetadataType="Schema" ID="edb930dd-5500-494d-9f80-5c6228e9bf3c" SourceId="1" SourceUrl="http://localhost:8001/dp2library/xe/metadata?xsd=xsd2" />
+    <MetadataFile FileName="metadata62.xsd" MetadataType="Schema" ID="cf9736d2-0454-4f2b-9e47-7559345d59a5" SourceId="1" SourceUrl="http://localhost:8001/dp2library/xe/metadata?xsd=xsd1" />
+    <MetadataFile FileName="metadata63.xsd" MetadataType="Schema" ID="2d68bf46-fa41-412b-a8df-0b84ebeb56ce" SourceId="1" SourceUrl="http://localhost:8001/dp2library/xe/metadata?xsd=xsd0" />
+    <MetadataFile FileName="LibraryService1.wsdl" MetadataType="Wsdl" ID="dfcb48f8-2cbc-4f18-92c1-d25136b1516a" SourceId="1" SourceUrl="http://localhost:8001/dp2library/xe/metadata" />
+    <MetadataFile FileName="metadata64.xsd" MetadataType="Schema" ID="d6449433-80f7-4905-a112-d4465e8cbe3f" SourceId="1" SourceUrl="http://localhost:8001/dp2library/xe/metadata?xsd=xsd5" />
+    <MetadataFile FileName="metadata65.xsd" MetadataType="Schema" ID="b2bd003c-18d5-435f-8403-e3e2c783a564" SourceId="1" SourceUrl="http://localhost:8001/dp2library/xe/metadata?xsd=xsd4" />
+    <MetadataFile FileName="metadata1.wsdl" MetadataType="Wsdl" ID="39f11bc5-59b5-4645-b494-94b77388c7c5" SourceId="1" SourceUrl="http://localhost:8001/dp2library/xe/metadata?wsdl=wsdl0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

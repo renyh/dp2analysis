@@ -72,13 +72,17 @@ namespace demo
 
         private void button_verify_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.dp2ServerUrl = this.dp2ServerUrl;
+            Properties.Settings.Default.dp2Username = this.dp2Username;
+            Properties.Settings.Default.dp2Password = this.dp2Password;
+
             string error = "";
             int nRet = dp2analysisService.Instance.Verify(this.dp2Username,
                 this.dp2Password, 
                 out error);
             if (nRet == -1 || nRet == 0)
             {
-                MessageBox.Show(this, error);
+                MessageBox.Show(this, "出错:["+error+"]");
                 return;
             }
 
@@ -101,6 +105,10 @@ namespace demo
             Properties.Settings.Default.dp2Password = this.dp2Password;
 
             Properties.Settings.Default.Save();
+
+            dp2analysisService.Instance.dp2ServerUrl=this.dp2ServerUrl ;
+            dp2analysisService.Instance.dp2Username=this.dp2Username ;
+            dp2analysisService.Instance.dp2Password=this.dp2Password ;  
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

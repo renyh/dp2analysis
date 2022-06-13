@@ -84,11 +84,10 @@ namespace demo
                 userName);
             try
             {
-                string strError = "";
                 long lRet = channel.Login(userName,
                 passord,
                 "type=worker,client=dp2analysis|0.01",
-                out strError);
+                out error);
                 if (lRet == -1)
                 {
                     return -1;
